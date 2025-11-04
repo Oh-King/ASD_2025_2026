@@ -1,0 +1,12 @@
+# CLion / IntelliJ
+.idea/
+cmake-build-*/
+
+# File binari
+*.exe
+*.o
+*.obj
+*.dll
+*.so
+*.dylib
+*.out

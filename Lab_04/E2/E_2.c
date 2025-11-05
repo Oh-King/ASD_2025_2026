@@ -10,7 +10,7 @@ typedef struct {
 }amico_t;
 
 
-amico_t* setNfillVect(char *filename, int *n_amici);
+amico_t* setNfillVect(const char *filename, int *n_amici);
 int comb(int pos, amico_t *val, char **sol, int n, int k);
 
 int print_counter = 1;
@@ -37,7 +37,7 @@ int main(void) {
     return 0;
 }
 
-amico_t* setNfillVect(char *filename, int *n_amici) {
+amico_t* setNfillVect(const char *filename, int *n_amici) {
 
     FILE *fp = fopen(filename, "r");
     fscanf(fp, "%d", n_amici);
@@ -55,6 +55,10 @@ amico_t* setNfillVect(char *filename, int *n_amici) {
 }
 
 int comb(int pos, amico_t *val, char **sol, int n, int k) {
+    if (val == NULL || sol == NULL) {
+        printf("ERRORE: puntatore a NULL, rivedere allocazione memoria!");
+        return -1;
+    }
     int i;
     if (pos >= k) {
         printf("%d. ", print_counter);

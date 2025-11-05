@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #define MAXL 256
 
@@ -8,22 +9,39 @@ typedef struct {
     char **songs;
 }amico_t;
 
-int disp(int pos,int *val,int *sol,int *mark, int n, int k,int cnt);
-amico_t* setVect(char *filename, int *n_amici);
+
+amico_t* setNfillVect(char *filename, int *n_amici);
+int comb(int pos, amico_t *val, char **sol, int n, int k);
+
+int print_counter = 1;
 
 int main(void) {
     int n_amici;
-    amico_t *amici = setVect("brani.txt", &n_amici);
+    amico_t *amici = setNfillVect("brani.txt", &n_amici);
+    char **sol = malloc(n_amici * sizeof(char*));
+    for (int i = 0; i < n_amici; i++)
+        sol[i] = malloc(MAXL*sizeof(char));
 
+    comb(0, amici, sol, n_amici, n_amici);
+
+    for (int i = 0; i < n_amici; i++) {
+        free(sol[i]);
+    }
+    free(sol);
+    for (int j = 0; j < n_amici; j++) {
+        for (int k = 0; k < amici[j].n_songs; k++)
+            free(amici[j].songs[k]);
+        free(amici[j].songs);
+    }
     free(amici);
     return 0;
 }
 
-amico_t* setVect(char *filename, int *n_amici) {
+amico_t* setNfillVect(char *filename, int *n_amici) {
 
     FILE *fp = fopen(filename, "r");
     fscanf(fp, "%d", n_amici);
-    amico_t *amici =(amico_t*)malloc(*n_amici*sizeof(int));
+    amico_t *amici =(amico_t*)malloc(*n_amici*sizeof(amico_t));
     for (int i = 0; i < *n_amici; i++) {
         fscanf(fp, "%d", &amici[i].n_songs);
         amici[i].songs = malloc(amici[i].n_songs*sizeof(char*));
@@ -36,20 +54,21 @@ amico_t* setVect(char *filename, int *n_amici) {
     return amici;
 }
 
-int disp(int pos,int *val,int *sol,int *mark, int n, int k,int cnt){
+int comb(int pos, amico_t *val, char **sol, int n, int k) {
     int i;
-    if (pos >= k){
-        for (i=0; i<k; i++) printf("%d ", sol[i]);
-        printf("\n");
-        return cnt+1;
-    }
-    for (i=0; i<n; i++){
-        if (mark[i] == 0) {
-            mark[i] = 1;
-            sol[pos] = val[i];
-            cnt = disp(pos+1, val, sol, mark, n, k,cnt);
-            mark[i] = 0;
+    if (pos >= k) {
+        printf("%d. ", print_counter);
+        for (i=0; i < k; i++) {
+            if (i == k-1) printf("%s", sol[i]);
+            else printf("%s - ", sol[i]);
         }
+        printf("\n");
+        print_counter++;
+        return 0;
     }
-    return cnt;
+    for (i = 0; i < val[pos].n_songs; i++) {
+        strcpy(sol[pos], val[pos].songs[i]);
+        comb(pos+1, val, sol, n, k);
+    }
+    return 0;
 }

@@ -9,7 +9,6 @@ typedef struct {
     char **songs;
 }amico_t;
 
-
 amico_t* setNfillVect(const char *filename, int *n_amici);
 int comb(int pos, amico_t *val, char **sol, int n, int k);
 
@@ -36,9 +35,7 @@ int main(void) {
     free(amici);
     return 0;
 }
-
 amico_t* setNfillVect(const char *filename, int *n_amici) {
-
     FILE *fp = fopen(filename, "r");
     fscanf(fp, "%d", n_amici);
     amico_t *amici =(amico_t*)malloc(*n_amici*sizeof(amico_t));

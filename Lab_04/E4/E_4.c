@@ -22,17 +22,28 @@ typedef struct {
 typedef enum {Z, R, T, S} stones_conv;
 
 void leggi_file(char *filename, jewels_t gioielli[4]);
-void solve(jewels_t* gioielli);
+void solve(jewels_t* gioielli, int index);
 void solve_r(jewels_t gioielli[4], collana_t *sol, collana_t* best, int last_choice, int cons, int n_smr, int n_zaf);
 bool check(jewels_t gioielli[4], int last_choice);
 
 int max_rip;
 
 int main(void) {
-
+    FILE *fp = fopen("test_set.txt", "r");
+    int n_test;
+    fscanf(fp, "%d", &n_test);
     jewels_t gioielli[4];
-    leggi_file("test_set.txt", gioielli);
-    solve(gioielli);
+    //leggi_file("test_set.txt", gioielli);
+
+    for (int index = 0; index < n_test; index++) {
+        fscanf(fp, "%d%d%d%d%d%d%d%d%d",
+        &gioielli[Z].n_jewels, &gioielli[R].n_jewels, &gioielli[T].n_jewels, &gioielli[S].n_jewels,
+        &gioielli[Z].val, &gioielli[R].val, &gioielli[T].val, &gioielli[S].val, &max_rip);
+       solve(gioielli, index+1);
+    }
+
+
+    fclose(fp);
     return 0;
 }
 
@@ -46,7 +57,7 @@ void leggi_file(char *filename, jewels_t gioielli[4]) {
     fclose(fp);
 }
 
-void solve(jewels_t gioielli[4]) {
+void solve(jewels_t gioielli[4], int index) {
     int dim = gioielli[Z].n_jewels + gioielli[R].n_jewels + gioielli[T].n_jewels + gioielli[S].n_jewels;
     collana_t sol, best;
     sol.value = 0;
@@ -58,9 +69,11 @@ void solve(jewels_t gioielli[4]) {
 
     //Funzione ricorsiva
     solve_r(gioielli, &sol, &best, -1, 0, 0, 0);
+    printf("Per il test case n: %d, abbiamo i seguenti risultati:\n", index);
     printf("Lunghezza massima: %d pietre\n", best.n_jewels);
     printf("Valore max: %d\n", best.value);
     printf("Ordine:\n");
+    printf("-");
     for (int i = 0; i < best.n_jewels; i++) {
         char pietra;
         switch(best.ord_pietre[i]) {
@@ -70,8 +83,9 @@ void solve(jewels_t gioielli[4]) {
             case S: pietra = 'S'; break;
             default: pietra = '?'; break;
         }
-        printf("%c ", pietra);
+        printf("%c-", pietra);
     }
+    printf("\n");
     //Libero memoria
     free(sol.ord_pietre);
     free(best.ord_pietre);

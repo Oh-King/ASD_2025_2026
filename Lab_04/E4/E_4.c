@@ -34,7 +34,6 @@ int main(void) {
     fscanf(fp, "%d", &n_test);
     jewels_t gioielli[4];
     //leggi_file("test_set.txt", gioielli);
-
     for (int index = 0; index < n_test; index++) {
         fscanf(fp, "%d%d%d%d%d%d%d%d%d",
         &gioielli[Z].n_jewels, &gioielli[R].n_jewels, &gioielli[T].n_jewels, &gioielli[S].n_jewels,
@@ -161,8 +160,6 @@ void solve_r(jewels_t gioielli[4], collana_t *sol, collana_t *best, int last_cho
         }
     }
 }
-
-
 bool check(jewels_t gioielli[4], int last_choice){
     if (last_choice == Z || last_choice == T) {
         if (gioielli[Z].n_jewels > 0 || gioielli[R].n_jewels > 0) return true;

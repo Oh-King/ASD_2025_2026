@@ -4,7 +4,6 @@
  * T -> Z/R
  * S -> T/S
  */
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
@@ -94,38 +93,35 @@ void solve_r(int gioielli[4], collana_t *sol, collana_t *best, int last_choice) 
                     solve_r(gioielli, sol, best, Z);
                     gioielli[Z]++;
                     sol->n_jewels--;
-                }
-                if (gioielli[R] > 0) {
-                    gioielli[R]--;
-                    sol->ord_pietre[sol->n_jewels] = R;
-                    sol->n_jewels++;
-                    solve_r(gioielli, sol, best, R);
-                    gioielli[R]++;
-                    sol->n_jewels--;
-                }
-            }else {
-                if (gioielli[S] > 0) {
-                    gioielli[S]--;
-                    sol->ord_pietre[sol->n_jewels] = S;
-                    sol->n_jewels++;
-                    solve_r(gioielli, sol, best, S);
-                    gioielli[S]++;
-                    sol->n_jewels--;
-                }
-                if (gioielli[T] > 0) {
-                    gioielli[T]--;
-                    sol->ord_pietre[sol->n_jewels] = T;
-                    sol->n_jewels++;
-                    solve_r(gioielli, sol, best, T);
-                    gioielli[T]++;
-                    sol->n_jewels--;
-                }
+            }
+            if (gioielli[R] > 0) {
+                gioielli[R]--;
+                sol->ord_pietre[sol->n_jewels] = R;
+                sol->n_jewels++;
+                solve_r(gioielli, sol, best, R);
+                gioielli[R]++;
+                sol->n_jewels--;
+            }
+            }else{
+            if (gioielli[S] > 0) {
+                gioielli[S]--;
+                sol->ord_pietre[sol->n_jewels] = S;
+                sol->n_jewels++;
+                solve_r(gioielli, sol, best, S);
+                gioielli[S]++;
+                sol->n_jewels--;
+            }
+            if (gioielli[T] > 0) {
+                gioielli[T]--;
+                sol->ord_pietre[sol->n_jewels] = T;
+                sol->n_jewels++;
+                solve_r(gioielli, sol, best, T);
+                gioielli[T]++;
+                sol->n_jewels--;
             }
         }
+   }
 }
-
-
-
 bool check(int gioielli[4], int last_choice){
     if (last_choice == Z || last_choice == T) {
         if (gioielli[Z] > 0 || gioielli[R] > 0) return true;

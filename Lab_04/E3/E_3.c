@@ -16,15 +16,24 @@ typedef struct {
 typedef enum {Z, R, T, S} stones_conv;
 
 void leggi_file(char *filename, int gioielli[4]);
-void solve(int* gioielli);
+void solve(int* gioielli, int index);
 void solve_r(int gioielli[4], collana_t *sol, collana_t* best, int last_choice);
 bool check(int gioielli[4], int last_choice);
 
 int main(void) {
 
     int gioielli[4];
-    leggi_file("easy_test_set.txt", gioielli);
-    solve(gioielli);
+    //leggi_file("hard_test_set.txt", gioielli);
+    FILE *fp = fopen("easy_test_set.txt", "r");
+    if (fp == NULL) return -1;
+    int n_test;
+    fscanf(fp, " %d ", &n_test);
+    for (int k = 0; k < n_test; k++) {
+        fscanf(fp, "%d %d %d %d", &gioielli[Z], &gioielli[R], &gioielli[T], &gioielli[S]);
+        solve(gioielli, k+1);
+    }
+    fclose(fp);
+
     return 0;
 }
 
@@ -36,7 +45,7 @@ void leggi_file(char *filename, int gioielli[4]) {
     fclose(fp);
 }
 
-void solve(int gioielli[4]) {
+void solve(int gioielli[4], int index) {
     int dim = gioielli[Z] + gioielli[R] + gioielli[T] + gioielli[S];
     collana_t sol, best;
     sol.n_jewels = 0;
@@ -46,6 +55,7 @@ void solve(int gioielli[4]) {
 
     //Funzione ricorsiva
     solve_r(gioielli, &sol, &best, -1);
+    printf("Soluzioni test case n:%d\n", index);
     printf("Lunghezza massima: %d pietre\n", best.n_jewels);
     printf("Ordine:\n");
     for (int i = 0; i < best.n_jewels; i++) {

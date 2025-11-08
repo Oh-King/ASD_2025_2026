@@ -30,6 +30,7 @@ int max_rip;
 
 int main(void) {
     FILE *fp = fopen("test_set.txt", "r");
+    if (fp == NULL ) return -1;
     int n_test;
     fscanf(fp, "%d", &n_test);
     jewels_t gioielli[4];
@@ -40,8 +41,6 @@ int main(void) {
         &gioielli[Z].val, &gioielli[R].val, &gioielli[T].val, &gioielli[S].val, &max_rip);
        solve(gioielli, index+1);
     }
-
-
     fclose(fp);
     return 0;
 }
@@ -115,7 +114,7 @@ void solve_r(jewels_t gioielli[4], collana_t *sol, collana_t *best, int last_cho
         }
     }else if (check(gioielli, last_choice) == true) {
         if (last_choice == Z || last_choice == T) {
-            if ((gioielli[Z].n_jewels > 0) && (last_choice != Z || cons < max_rip ) && ((n_zaf+1) <= n_smr)){
+            if ((gioielli[Z].n_jewels > 0) && (last_choice != Z || cons < max_rip ) && (n_zaf+1 <= n_smr)){
                 gioielli[Z].n_jewels--;
                 sol->ord_pietre[sol->n_jewels] = Z;
                 sol->n_jewels++;

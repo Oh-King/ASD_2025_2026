@@ -50,6 +50,7 @@ void attSEL(int N, attivita_t *seq) {
     }
     //print
     printf("La durata massima corrisponde a: %d\n", max);
+    printf("Un sottoinsieme che ha durata massima:\n");
     printf("( ");
     for (i = 0; i < N; i++) {
         if (best[i] == 1) printf("(%d, %d) ", seq[i].start, seq[i].end);

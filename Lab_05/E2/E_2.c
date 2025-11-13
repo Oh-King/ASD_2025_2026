@@ -48,10 +48,12 @@ void setNfill_param(parameters *parametri) {
         for (int i = 0; i < parametri->R; i++) {
             parametri->board[i] = (tile_t*)malloc(parametri->C*sizeof(tile_t));
         }
+        int index = 0;
         for (int k = 0; k < parametri->R; k++) {
             for (int j = 0; j < parametri->C; j++) {
                 fscanf(fp, "%d/%d", &(parametri->board[k][j].tile_id), &((parametri->board[k][j].rotation)));
-                if (parametri->board[k][j].tile_id != -1) parametri->mark[k+j] = 1;
+                if (parametri->board[k][j].tile_id != -1) parametri->mark[index++] = 1;
+                else index++;
             }
         }
     }

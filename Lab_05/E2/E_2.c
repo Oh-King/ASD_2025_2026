@@ -25,6 +25,7 @@ typedef struct {
 }parameters;
 
 void setNfill_param(parameters *parametri);
+void solve(parameters *parametri, int index, int max);
 
 int main(void) {
 
@@ -51,10 +52,29 @@ void setNfill_param(parameters *parametri) {
         int index = 0;
         for (int k = 0; k < parametri->R; k++) {
             for (int j = 0; j < parametri->C; j++) {
-                fscanf(fp, "%d/%d", &(parametri->board[k][j].tile_id), &((parametri->board[k][j].rotation)));
-                if (parametri->board[k][j].tile_id != -1) parametri->mark[index++] = 1;
+                fscanf(fp, "%d/%d", &(parametri->board[k][j].tile_id), &(parametri->board[k][j].rotation));
+                if (parametri->board[k][j].tile_id != -1) parametri->mark[index++] = 2; //inizializzo a 2 per segnalare
+                //che sono le tessere della configurazione iniziale, poi segnerò a 1 quelli di volta in volta selezionati
                 else index++;
             }
         }
     }
+    fclose(fp);
 }
+
+void solve(parameters *parametri, int index, int pos, int max) {
+    if (pos >= index) {
+        printf("Il punteggio massimo raggiunto corrisponde a:%d\n", max);
+        printf("Con la seguente configurazione:\n");
+        for (int i = 0; i < parametri->R; i++) {
+            for (int j = 0; j < parametri->C; j++) {
+                printf("%d/%d", parametri->board[i][j].tile_id, parametri->board[i][j].rotation);
+            }
+            printf("\n");
+        }
+    }
+    else {
+
+    }
+}
+

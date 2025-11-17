@@ -25,7 +25,7 @@ typedef struct {
 }parameters;
 
 void setNfill_param(parameters *parametri);
-void solve(parameters *parametri, int index, int max);
+void solve(parameters *parametri, tessera_t* sol, int pos, int max);
 
 int main(void) {
 
@@ -62,11 +62,12 @@ void setNfill_param(parameters *parametri) {
     fclose(fp);
 }
 
-void solve(parameters *parametri, int index, int pos, int max) {
-    if (pos >= index) {
+void solve(parameters *parametri, tessera_t* sol, int pos, int max) {
+    int i;
+    if (pos >= (parametri->N)) {
         printf("Il punteggio massimo raggiunto corrisponde a:%d\n", max);
         printf("Con la seguente configurazione:\n");
-        for (int i = 0; i < parametri->R; i++) {
+        for (i = 0; i < parametri->R; i++) {
             for (int j = 0; j < parametri->C; j++) {
                 printf("%d/%d", parametri->board[i][j].tile_id, parametri->board[i][j].rotation);
             }
@@ -74,7 +75,14 @@ void solve(parameters *parametri, int index, int pos, int max) {
         }
     }
     else {
-
+        for (i = 0; i < parametri->N; i++) {
+            if (parametri->mark[i] == 0) {
+                parametri->mark[i] = 1;
+                sol[pos] = parametri->tile_vett[i];
+                solve(parametri, sol, pos+1, max);
+                parametri->mark[i] = 0;
+            }
+        }
     }
 }
 

@@ -25,7 +25,9 @@ typedef struct {
 }parameters;
 
 void setNfill_param(parameters *parametri);
-void solve(parameters *parametri, tessera_t* sol, int pos, int max);
+void wrap(parameters *parametri);
+void solve(parameters *parametri, tessera_t* sol, int pos, int *max);
+int calc_score(parameters *parametri, tessera_t *sol);
 
 int main(void) {
 
@@ -33,13 +35,15 @@ int main(void) {
 }
 
 void setNfill_param(parameters *parametri) {
+    int i= 0;
     FILE *fp = fopen("tiles.txt", "r");     //lettura di tiles.txt e riempimento vettore
     fscanf(fp, "%d", &(parametri->N));
     parametri->mark =(int*)calloc(parametri->N, sizeof(int));
     parametri->tile_vett = (tessera_t*)malloc(sizeof(tessera_t));
     while (fscanf(fp,"%c%d%c%d",
-        &(parametri->tile_vett->color1), &(parametri->tile_vett->val1),
-        &(parametri->tile_vett->color2), &(parametri->tile_vett->val2)) == 4) {
+        &(parametri->tile_vett[i].color1), &(parametri->tile_vett[i].val1),
+        &(parametri->tile_vett[i].color2), &(parametri->tile_vett[i].val2)) == 4) {
+        i++;
     }
     fclose(fp);
     fp = fopen("board.txt","r");
@@ -62,17 +66,23 @@ void setNfill_param(parameters *parametri) {
     fclose(fp);
 }
 
-void solve(parameters *parametri, tessera_t* sol, int pos, int max) {
+void wrap(parameters *parametri) {
+    int k = 0;
+    int pos = 0, max = -1;
+    tessera_t *sol = (tessera_t*)malloc(parametri->N*sizeof(tessera_t));
+    solve(parametri, sol, pos, &max);
+    printf("Il punteggio massimo raggiunto corrisponde a:%d\n", max);
+    printf("Con la seguente matrice:\n");
+
+}
+
+void solve(parameters *parametri, tessera_t* sol, int pos, int *max) {
+    if (sol == NULL) return;
     int i;
-    if (pos >= (parametri->N)) {
-        printf("Il punteggio massimo raggiunto corrisponde a:%d\n", max);
-        printf("Con la seguente configurazione:\n");
-        for (i = 0; i < parametri->R; i++) {
-            for (int j = 0; j < parametri->C; j++) {
-                printf("%d/%d", parametri->board[i][j].tile_id, parametri->board[i][j].rotation);
-            }
-            printf("\n");
-        }
+    if (pos >= (parametri->R)*(parametri->C)) {
+        int curr_score = calc_score(parametri, sol);
+        if (curr_score > *max) *max = curr_score;
+
     }
     else {
         for (i = 0; i < parametri->N; i++) {
@@ -86,3 +96,8 @@ void solve(parameters *parametri, tessera_t* sol, int pos, int max) {
     }
 }
 
+int calc_score(parameters *parametri, tessera_t *sol){
+    int score = 0;
+
+    return score;
+}

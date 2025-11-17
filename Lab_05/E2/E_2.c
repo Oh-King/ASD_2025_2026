@@ -105,6 +105,12 @@ int calc_score(parameters *parametri, tessera_t *sol){
     return score;
 }
 
-char GET_H_color(parameters *parametri, tile_t card) {
-    return parametri->
+char GET_H_color(parameters *parametri, tile_t board_cell) {
+    tessera_t t = parametri->tile_vett[board_cell.tile_id];
+     return (board_cell.rotation == NFLIP) ? t.color1 : t.color2;
+}
+
+int GET_H_value(parameters *parametri, tile_t board_cell) {
+    tessera_t t = parametri->tile_vett[board_cell.tile_id];
+    return (board_cell.rotation == NFLIP) ? t.val1 : t.val2;
 }

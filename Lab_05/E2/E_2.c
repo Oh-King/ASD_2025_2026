@@ -38,14 +38,17 @@ void setNfill_param(parameters *parametri) {
     int i= 0;
     FILE *fp = fopen("tiles.txt", "r");     //lettura di tiles.txt e riempimento vettore
     fscanf(fp, "%d", &(parametri->N));
+
     parametri->mark =(int*)calloc(parametri->N, sizeof(int));
-    parametri->tile_vett = (tessera_t*)malloc(sizeof(tessera_t));
-    while (fscanf(fp,"%c%d%c%d",
+    parametri->tile_vett = (tessera_t*)malloc(parametri->N*sizeof(tessera_t));
+
+    while (fscanf(fp,"%c%d%c%d ",
         &(parametri->tile_vett[i].color1), &(parametri->tile_vett[i].val1),
         &(parametri->tile_vett[i].color2), &(parametri->tile_vett[i].val2)) == 4) {
         i++;
     }
     fclose(fp);
+
     fp = fopen("board.txt","r");
     if (fscanf(fp, "%d%d", &(parametri->R), &(parametri->C)) != 2) printf("Errore lettura board.txt");
     else {
@@ -100,4 +103,8 @@ int calc_score(parameters *parametri, tessera_t *sol){
     int score = 0;
 
     return score;
+}
+
+char GET_H_color(parameters *parametri, tile_t card) {
+    return parametri->
 }

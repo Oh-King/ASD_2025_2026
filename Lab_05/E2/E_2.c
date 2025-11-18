@@ -28,8 +28,14 @@ void setNfill_param(parameters *parametri);
 void wrap(parameters *parametri);
 void solve(parameters *parametri, tessera_t* sol, int pos, int *max);
 int calc_score(parameters *parametri, tessera_t *sol);
+char GETcolor(parameters *parametri, tile_t board_cell);
+int GETvalue(parameters *parametri, tile_t board_cell);
 
 int main(void) {
+
+    parameters parametri;
+    setNfill_param(&parametri);
+    wrap(&parametri);
 
     return 0;
 }
@@ -100,17 +106,44 @@ void solve(parameters *parametri, tessera_t* sol, int pos, int *max) {
 }
 
 int calc_score(parameters *parametri, tessera_t *sol){
-    int score = 0;
-
+    int score = 0, row, col;
+    //calcolo punteggio per righe
+    for (row = 0; row < parametri->R; row++) {
+        char color = GETcolor(parametri, parametri->board[row][0]);
+        int ok = 1;
+        int row_score = 0;
+        for (col = 0; col < parametri->C; col++) {
+            if (GETcolor(parametri, parametri->board[row][col]) != color) {
+                ok = 0;
+                break;
+            }
+            row_score += GETvalue(parametri, parametri->board[row][col]);
+        }
+        if (ok == 1) score += row_score;
+    }
+    //calcolo per colonne con stessa logica ma invertendo parametri
+    for (col = 0; col < parametri->C; col++) {
+        char color = GETcolor(parametri, parametri->board[0][col]);
+        int ok = 1;
+        int col_score = 0;
+        for (row = 0; row < parametri->R; row++) {
+            if (GETcolor(parametri, parametri->board[row][col]) != color) {
+                ok = 0;
+                break;
+            }
+            col_score += GETvalue(parametri, parametri->board[row][col]);
+        }
+        if (ok == 1) score += col_score;
+    }
     return score;
 }
 
-char GET_H_color(parameters *parametri, tile_t board_cell) {
+char GETcolor(parameters *parametri, tile_t board_cell) {
     tessera_t t = parametri->tile_vett[board_cell.tile_id];
      return (board_cell.rotation == NFLIP) ? t.color1 : t.color2;
 }
 
-int GET_H_value(parameters *parametri, tile_t board_cell) {
+int GETvalue(parameters *parametri, tile_t board_cell) {
     tessera_t t = parametri->tile_vett[board_cell.tile_id];
     return (board_cell.rotation == NFLIP) ? t.val1 : t.val2;
 }

@@ -47,7 +47,6 @@ void attSEL(int N, attivita_t *seq) {
         if (curr_val > max ) max = curr_val;
         solve(N, seq[i], seq, mark, best, curr_val, i+1, &max);
         mark[i] = 0;
-        curr_val = curr_val - (seq[i].end - seq[i].start);
     }
     //print
     printf("La durata massima corrisponde a: %d\n", max);

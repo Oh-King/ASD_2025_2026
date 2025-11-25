@@ -15,7 +15,7 @@ bool isOK(attivita_t att1, attivita_t att2);
 
 int main(void) {
     int n_att;
-    attivita_t *seq = leggi_file("att1.txt", &n_att);
+    attivita_t *seq = leggi_file("att.txt", &n_att);
     attSEL(n_att, seq);
     free(seq);
     return 0;
@@ -47,6 +47,7 @@ void attSEL(int N, attivita_t *seq) {
         if (curr_val > max ) max = curr_val;
         solve(N, seq[i], seq, mark, best, curr_val, i+1, &max);
         mark[i] = 0;
+        curr_val = curr_val - (seq[i].end - seq[i].start);
     }
     //print
     printf("La durata massima corrisponde a: %d\n", max);

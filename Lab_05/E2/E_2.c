@@ -185,7 +185,7 @@ int calc_score(parameters *parametri){
         if (ok == 1) score += row_score;
     }
 
-    // Calcolo punteggio per colonne (tubi verticali)
+    //calcolo punteggio per colonne //VEDERE SE ADATTARE f GET PER FUNZIONI VERTICALI
     for (col = 0; col < parametri->C; col++) {
         tessera_t t0 = parametri->tile_vett[parametri->board[0][col].tile_id];
         char color = (parametri->board[0][col].rotation == NFLIP) ? t0.color2 : t0.color1;

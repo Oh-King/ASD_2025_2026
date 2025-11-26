@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
 typedef struct {
     int start;
@@ -47,4 +48,10 @@ void Merge(attivita_t *V, attivita_t *aus, int l, int mid, int r) {
     for ( k = l; k <= r; k++ )
         V[k] = aus[k];
     return;
+}
+
+bool isLESSorEQ(attivita_t att1, attivita_t att2) {
+    if ((att1.end - att1.start) <= (att2.end - att2.start)) return true;
+    return false;
+
 }

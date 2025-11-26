@@ -135,5 +135,5 @@ int FindLastOK(attivita_t *V, int index) {
             return j;
         }
     }
-    return -1;  // Nessuna attività compatibile trovata
+    return -1;  //nessuna attività compatibile trovata
 }

@@ -26,7 +26,7 @@ int main(void) {
 
 attivita_t* readNfill(int *N){
     int i = 0;
-    FILE *fp = fopen("att.txt", "r");
+    FILE *fp = fopen("att3.txt", "r");
     if(fp == NULL) exit(1);
     fscanf(fp, "%d", N);
     attivita_t* V = (attivita_t*)malloc(*N*sizeof(attivita_t));

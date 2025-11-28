@@ -10,6 +10,7 @@ typedef struct {
 
 obj_t* WRAP_leggi_file();
 obj_t* leggi_file(char *filename);
-
+obj_t NAMEsearch(char *name, obj_t *OBJ, int n_obj);
+void PRINTdetails(obj_t *OBJ, int n_obj);
 
 #endif //LABORATORI_INVENTARIO_H

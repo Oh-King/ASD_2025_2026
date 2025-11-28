@@ -8,7 +8,7 @@ typedef struct {
     int hp, mp, atk, def, mag, spr; // se >0 bonus, se <0 malus
 }obj_t;
 
-void WRAP_leggi_file();
+obj_t* WRAP_leggi_file();
 obj_t* leggi_file(char *filename);
 
 

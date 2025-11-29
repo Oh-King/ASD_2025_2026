@@ -20,8 +20,8 @@ typedef struct {
 
 typedef struct tab_inv_t *tab_inv;
 
-tab_inv_t WRAP_leggi_file();
-tab_inv_t leggi_file(char *filename);
+tab_inv_t WRAP_leggi_inv();
+tab_inv_t leggi_inv(char *filename);
 int NAMEsearch(char *name, tab_inv_t *tab_inv);
 void PRINTdetails(tab_inv_t *tab_inv);
 void FREEinv(tab_inv_t *tab_inv);

@@ -24,5 +24,6 @@ tab_inv_t WRAP_leggi_file();
 tab_inv_t leggi_file(char *filename);
 int NAMEsearch(char *name, tab_inv_t *tab_inv);
 void PRINTdetails(tab_inv_t *tab_inv);
+void FREEinv(tab_inv_t *tab_inv);
 
 #endif //LABORATORI_INVENTARIO_H

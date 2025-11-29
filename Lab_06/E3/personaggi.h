@@ -19,8 +19,8 @@ typedef struct {
 }node_PG_t;
 
 typedef struct {
-    node_PG_t* head;
-    node_PG_t* tail;
+    link head;
+    link tail;
     int n_PG;
 }tab_PG_t;
 

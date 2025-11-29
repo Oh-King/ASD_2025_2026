@@ -1,4 +1,8 @@
 #ifndef LABORATORI_PERSONAGGI_H
 #define LABORATORI_PERSONAGGI_H
 
+typedef struct {
+
+};
+
 #endif //LABORATORI_PERSONAGGI_H

@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-tab_inv_t WRAP_leggi_file() {
+tab_inv_t WRAP_leggi_inv() {
     int n_obj;
     char filename[MAXLEN_N_T];
     printf("Inserisci il nome del file:\n");
@@ -12,7 +12,7 @@ tab_inv_t WRAP_leggi_file() {
     return tab_inv;
 }
 
-tab_inv_t leggi_file(char *filename) {
+tab_inv_t leggi_inv(char *filename) {
     int  i = 0;
     tab_inv_t tab_inv;
     FILE *fp = fopen(filename, "r");

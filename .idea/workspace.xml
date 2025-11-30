@@ -16,9 +16,10 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="77164d9d-02cc-4ad2-8318-1ca53fbc7f4e" name="Changes" comment="init functions">
+    <list default="true" id="77164d9d-02cc-4ad2-8318-1ca53fbc7f4e" name="Changes" comment="update with pointer to struct &quot;link&quot;, errors with definition">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab_06/E3/inventario.h" beforeDir="false" afterPath="$PROJECT_DIR$/Lab_06/E3/inventario.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab_06/E3/inventario.c" beforeDir="false" afterPath="$PROJECT_DIR$/Lab_06/E3/inventario.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab_06/E3/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/Lab_06/E3/main.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Lab_06/E3/personaggi.c" beforeDir="false" afterPath="$PROJECT_DIR$/Lab_06/E3/personaggi.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Lab_06/E3/personaggi.h" beforeDir="false" afterPath="$PROJECT_DIR$/Lab_06/E3/personaggi.h" afterDir="false" />
     </list>
@@ -147,15 +148,7 @@
       <workItem from="1764199083483" duration="1388000" />
       <workItem from="1764233801137" duration="9677000" />
       <workItem from="1764282742803" duration="21211000" />
-      <workItem from="1764448688490" duration="3865000" />
-    </task>
-    <task id="LOCAL-00001" summary="new">
-      <option name="closed" value="true" />
-      <created>1762333480872</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1762333480872</updated>
+      <workItem from="1764448688490" duration="9792000" />
     </task>
     <task id="LOCAL-00002" summary="new">
       <option name="closed" value="true" />
@@ -533,7 +526,23 @@
       <option name="project" value="LOCAL" />
       <updated>1764531846796</updated>
     </task>
-    <option name="localTasksCounter" value="49" />
+    <task id="LOCAL-00049" summary="update declarations and function signatures">
+      <option name="closed" value="true" />
+      <created>1764533587043</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1764533587043</updated>
+    </task>
+    <task id="LOCAL-00050" summary="update with pointer to struct &quot;link&quot;, errors with definition">
+      <option name="closed" value="true" />
+      <created>1764538463965</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1764538463967</updated>
+    </task>
+    <option name="localTasksCounter" value="51" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -557,8 +566,6 @@
       <path value="$PROJECT_DIR$/Lab_03" />
       <path value="$PROJECT_DIR$/Lab_04" />
     </ignored-roots>
-    <MESSAGE value="file reading" />
-    <MESSAGE value="ex completed" />
     <MESSAGE value="printf update" />
     <MESSAGE value="new ex" />
     <MESSAGE value="typedef declarations" />
@@ -582,7 +589,9 @@
     <MESSAGE value="structs declarations" />
     <MESSAGE value="structs declarations update" />
     <MESSAGE value="init functions" />
-    <option name="LAST_COMMIT_MESSAGE" value="init functions" />
+    <MESSAGE value="update declarations and function signatures" />
+    <MESSAGE value="update with pointer to struct &quot;link&quot;, errors with definition" />
+    <option name="LAST_COMMIT_MESSAGE" value="update with pointer to struct &quot;link&quot;, errors with definition" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>

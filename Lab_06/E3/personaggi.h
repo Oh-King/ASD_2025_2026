@@ -7,15 +7,16 @@ typedef struct {
     obj_t **vettEQ; //alloco un vettore di puntatori al vettore di oggetti nell'inventario
 }tab_EQ_t;
 
-typedef struct {
+typedef struct node_PG_t{
     char code[7];   //PGXXXX + terminatore
     char name[MAXLEN_N_T];
     char class[MAXLEN_N_T];
     tab_EQ_t *tab_EQ_ptr;
     stat_t PG_stats;
     struct node_PG_t* next;
-}node_PG_t, *link;
+}node_PG_t;
 
+typedef node_PG_t *link;
 
 typedef struct {
     link head;
@@ -24,7 +25,7 @@ typedef struct {
 }tab_PG_t;
 
 link newPGNode(char *code, char *name, char *class, stat_t stats);  //passo parametri esterni al "nodo" teorico
-link TAILinsert(link head, link tail); //serve head se inserisco in lista vuota
+void insertPG(link head, link tail); //serve head se inserisco in lista vuota
 void deletePG(link head);
 link searchCODE(char *code, link head);
 void printPGnEQ(link head); //N.B: chiede codice/nome personaggio nella funzione stessa

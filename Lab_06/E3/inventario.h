@@ -18,7 +18,7 @@ typedef struct {
     int n_obj, max_obj;
 }tab_inv_t;
 
-typedef struct tab_inv_t *tab_inv;
+typedef struct tab_inv_t *tab_inv_ptr;
 
 tab_inv_t WRAP_leggi_inv();
 tab_inv_t leggi_inv(char *filename);

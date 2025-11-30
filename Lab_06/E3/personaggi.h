@@ -24,4 +24,11 @@ typedef struct {
     int n_PG;
 }tab_PG_t;
 
+link newPGNode(link next, char *code, char *name, char *class, stat_t stats, tab_EQ_t *tab_EQ_ptr);
+link TAILinsert(link tail);
+void deletePG(link head);
+link searchCODE(char *code);
+void printPGnEQ(link head); //N.B: chiede codice/nome personaggio nella funzione stessa
+void modEQofPG(char *code); //N.B: aggiunta/rimozione oggetto
+
 #endif //LABORATORI_PERSONAGGI_H

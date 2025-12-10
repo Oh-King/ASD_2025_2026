@@ -14,6 +14,11 @@ typedef struct {
     float score; //punteggio ottenuto per corretta esecuzione
 }elem_t;
 
+typedef struct {
+    int n_elem;
+    elem_t* v_elem;
+}diag_t;
+
 elem_t* leggi_file();
 void solve();
 

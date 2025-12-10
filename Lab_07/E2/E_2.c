@@ -16,8 +16,15 @@ typedef struct {
 
 typedef struct {
     int n_elem;
-    elem_t* v_elem;
+    elem_t* V_elem;
 }diag_t;
+
+typedef struct node_t *link;
+
+typedef struct {
+    link next;
+    diag_t diag;
+}node_t;
 
 elem_t* leggi_file();
 void solve();

@@ -61,9 +61,13 @@ link NEWnode(link succ, diag_t diagonale) {
     return node;
 }
 
-int gen_diag() {
-    link new = NULL; //nuovo nodo in caso servisse
+int gen_diag(int n, int k, int pos, diag_t curr_diag, node_t *node, int count) {
+    int i;  //nuovo nodo in caso servisse
     if (pos >= k) {  //vuol dire che la diagonale corrente ha raggiunto la cardinalità massima
+        node->next = NEWnode(NULL, curr_diag);
+        return count+1;
+    }
+    for (i = 0; i < n; i++) {
 
     }
 }

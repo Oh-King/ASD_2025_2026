@@ -53,6 +53,8 @@ elem_t* leggi_file() {
     return elements;
 }
 
+
+
 link NEWnode(link succ, diag_t diagonale) {
     link node = malloc(sizeof(node_t));
     if (node == NULL ) return NULL;
@@ -61,8 +63,21 @@ link NEWnode(link succ, diag_t diagonale) {
     return node;
 }
 
+
+
 link disp_list(elem_t *elements, int pos, int max_el, elem_t *curr_diag,int cnt) {
     link head = NULL;
 
     return head;
+}
+
+void solve() {
+    elem_t *elements = leggi_file();
+    disp_list(elements, 0, 1, diag, cnt);
+    disp_list(elements, 0, 2, diag, cnt);
+    disp_list(elements, 0, 3, diag, cnt);
+    disp_list(elements, 0, 4, diag, cnt);
+    disp_list(elements, 0, 5, diag, cnt);
+
+    free(elements);
 }

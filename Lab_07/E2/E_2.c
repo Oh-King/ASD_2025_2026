@@ -19,15 +19,16 @@ typedef struct {
     elem_t* V_elem;
 }diag_t;
 
-typedef struct node_t *link;
-
-typedef struct {
-    link next;
+typedef struct node_t {
+    struct node_t* next;
     diag_t diag;
 }node_t;
 
+typedef node_t *link;
+
 elem_t* leggi_file();
 void solve();
+link NEWnode(link succ, diag_t diagonale);
 
 int main(void) {
 
@@ -52,8 +53,11 @@ elem_t* leggi_file() {
     return elements;
 }
 
-link NEWnode() {
+link NEWnode(link succ, diag_t diagonale) {
     link node = malloc(sizeof(node_t));
+    if (node == NULL ) return NULL;
+    node->next = succ;
+    node->diag = diagonale;
     return node;
 }
 

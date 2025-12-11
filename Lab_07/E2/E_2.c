@@ -52,3 +52,13 @@ elem_t* leggi_file() {
     return elements;
 }
 
+link NEWnode() {
+    link node = malloc(sizeof(node_t));
+    return node;
+}
+
+link disp_list(elem_t *elements, int pos, int max_el, elem_t *curr_diag,int cnt) {
+    link head = NULL;
+
+    return head;
+}

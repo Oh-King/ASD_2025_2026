@@ -61,18 +61,25 @@ link NEWnode(link succ, diag_t diagonale) {
     return node;
 }
 
-link gen_diag(int n, int k, int pos, diag_t curr_diag, elem_t *elements,node_t *node, int *count, int last_dir) {
+int gen_diag(int n, int k, int pos, diag_t curr_diag, elem_t *elements,node_t *node, node_t *tail, int count, int last_dir) {
     int i;  //nuovo nodo in caso servisse
     if (pos >= k) {  //vuol dire che la diagonale corrente ha raggiunto la cardinalità massima
-        node->next = NEWnode(NULL, curr_diag);
-        (*count)++;
-
-
+        tail->next = NEWnode(NULL, curr_diag);
+        node = tail;
+        tail = tail->next;
+        return count+1;
     }
     for (i = 0; i < n; i++) {
         if (elements[i].dir_in == last_dir && (pos == 0 ? elements[i].prec == 0 : 1)) {
             curr_diag.V_elem[pos] = elements[i];
-            curr_diag.n_elem++;
+            curr_diag.n_elem = pos +1;
+            if (elements[i].fin == 1) {
+                node->next = NEWnode(NULL, curr_diag);
+                count++;
+            }else {
+                count = gen_diag(n, k, pos+1, curr_diag, elements, node, tail, count, elements[i].dir_ex);
+            }
         }
     }
+    return count;
 }

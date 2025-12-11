@@ -53,8 +53,6 @@ elem_t* leggi_file() {
     return elements;
 }
 
-
-
 link NEWnode(link succ, diag_t diagonale) {
     link node = malloc(sizeof(node_t));
     if (node == NULL ) return NULL;
@@ -63,10 +61,21 @@ link NEWnode(link succ, diag_t diagonale) {
     return node;
 }
 
-
-
-link disp_list(elem_t *elements, int pos, int max_el, elem_t *curr_diag,int cnt) {
+link disp_list(elem_t *elements, int pos, int N, int k, diag_t *curr_diag,int *cnt) {
+    int i;
     link head = NULL;
+    if (pos >= k) {
+        *cnt = *cnt+1;
+
+        head = NEWnode(NULL, *curr_diag);
+
+    }
+    else {
+        for (i = 0; i < N; i++) {
+            curr_diag[pos] = elements[i];
+            head = disp_list(elements, pos+1, N, k, curr_diag, cnt)
+        }
+    }
 
     return head;
 }

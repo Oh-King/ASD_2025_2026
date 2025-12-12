@@ -31,8 +31,9 @@ elem_t* leggi_file();
 void solve();
 link NEWnode(link succ, diag_t diagonale);
 bool hasACRO(diag_t diag, int end);
-bool checkDIFF(diag_t diag, int end, int DD)
+bool checkDIFF(diag_t diag, int end, int DD);
 int getDD();
+int getDP();
 
 int main(void) {
 
@@ -73,8 +74,11 @@ int gen_diag(int n, int k, int pos, diag_t curr_diag, elem_t *elements,node_t *n
         if ((hasACRO(curr_diag, pos) == true) && (checkDIFF(curr_diag, pos, DD) == true)) {
             tail->next = NEWnode(NULL, curr_diag);
             tail->next->diag.V_elem = (elem_t*)malloc(k*sizeof(elem_t));
+            for (i = 0; i < pos; i++) {
+                tail->next->diag.V_elem[i] = curr_diag.V_elem[i];
+            }
+            tail->next->diag.n_elem = pos;
             tail = tail->next;
-            return count+1;
         }
         return count;
     }

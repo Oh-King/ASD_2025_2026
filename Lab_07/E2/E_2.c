@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
 #define MAX_ELEM 5
 #define MAX_DIAG 3
@@ -29,6 +30,7 @@ typedef node_t *link;
 elem_t* leggi_file();
 void solve();
 link NEWnode(link succ, diag_t diagonale);
+bool hasACRO(diag_t diag, int end);
 
 int main(void) {
 
@@ -65,11 +67,14 @@ int gen_diag(int n, int k, int pos, diag_t curr_diag, elem_t *elements,node_t *n
     int i;  //nuovo nodo in caso servisse
     if (pos >= k) {  //vuol dire che la diagonale corrente ha raggiunto la cardinalità massima
         //verifico se ha almeno un elemento acrobatico e in caso aggiungo
-        tail->next = NEWnode(NULL, curr_diag);
-        tail->next->diag.V_elem = (elem_t*)malloc(k*sizeof(elem_t));
-        node = tail;
-        tail = tail->next;
-        return count+1;
+        if (hasACRO(curr_diag, pos) == true) {
+            tail->next = NEWnode(NULL, curr_diag);
+            tail->next->diag.V_elem = (elem_t*)malloc(k*sizeof(elem_t));
+            node = tail;
+            tail = tail->next;
+            return count+1;
+        }
+        return count;
     }
     for (i = 0; i < n; i++) {
         if (elements[i].dir_in == last_dir && (pos == 0 ? elements[i].prec == 0 : 1)) {
@@ -84,4 +89,10 @@ int gen_diag(int n, int k, int pos, diag_t curr_diag, elem_t *elements,node_t *n
         }
     }
     return count;
+}
+
+bool hasACRO(diag_t diag, int end) {
+    int i;
+    for ( i = 0; i < end; i++) if (diag.V_elem[i].typo != 0) return true;
+    return false;
 }

@@ -66,19 +66,19 @@ link NEWnode(link succ, diag_t diagonale) {
     return node;
 }
 
-int gen_diag(int n, int k, int pos, diag_t curr_diag, elem_t *elements,node_t *node, node_t *tail, int count, int last_dir) {
-    int i;  //nuovo nodo in caso servisse
-    if (pos >= k) {  //vuol dire che la diagonale corrente ha raggiunto la cardinalità massima
-        //verifico se ha almeno un elemento acrobatico e in caso aggiungo
-        int DD = getDD();
+int gen_diag(int n, int k, int pos, diag_t curr_diag, elem_t *elements, node_t *node, node_t *tail, int count, int last_dir) {
+    int i, DD = getDD();
+
+    if (pos >= k) {
         if ((hasACRO(curr_diag, pos) == true) && (checkDIFF(curr_diag, pos, DD) == true)) {
             tail->next = NEWnode(NULL, curr_diag);
-            tail->next->diag.V_elem = (elem_t*)malloc(k*sizeof(elem_t));
+            tail->next->diag.V_elem = (elem_t*)malloc(k * sizeof(elem_t));
             for (i = 0; i < pos; i++) {
                 tail->next->diag.V_elem[i] = curr_diag.V_elem[i];
             }
             tail->next->diag.n_elem = pos;
             tail = tail->next;
+            return count + 1;  // Incrementa count
         }
         return count;
     }
@@ -86,17 +86,28 @@ int gen_diag(int n, int k, int pos, diag_t curr_diag, elem_t *elements,node_t *n
     for (i = 0; i < n; i++) {
         if (elements[i].dir_in == last_dir && (pos == 0 ? elements[i].prec == 0 : 1)) {
             curr_diag.V_elem[pos] = elements[i];
-            curr_diag.n_elem = pos +1;
+            curr_diag.n_elem = pos + 1;
+
             if (elements[i].fin == 1) {
-                node->next = NEWnode(NULL, curr_diag);
-                count++;
-            }else {
-                count = gen_diag(n, k, pos+1, curr_diag, elements, node, tail, count, elements[i].dir_ex);
+                // Salva diagonale corrente
+                if ((hasACRO(curr_diag, pos + 1) == true) && (checkDIFF(curr_diag, pos + 1, DD) == true)) {
+                    tail->next = NEWnode(NULL, curr_diag);
+                    tail->next->diag.V_elem = (elem_t*)malloc(k * sizeof(elem_t));
+                    for (int j = 0; j <= pos; j++) {
+                        tail->next->diag.V_elem[j] = curr_diag.V_elem[j];
+                    }
+                    tail->next->diag.n_elem = pos + 1;
+                    tail = tail->next;
+                    count++;
+                }
+            } else {
+                count = gen_diag(n, k, pos + 1, curr_diag, elements, node, tail, count, elements[i].dir_ex);
             }
         }
     }
     return count;
 }
+
 
 bool hasACRO(diag_t diag, int end) {
     int i;

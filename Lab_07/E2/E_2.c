@@ -96,3 +96,10 @@ bool hasACRO(diag_t diag, int end) {
     for ( i = 0; i < end; i++) if (diag.V_elem[i].typo != 0) return true;
     return false;
 }
+
+bool checkDIFF(diag_t diag, int end, int DD) {
+    int i, sum = 0;
+    for (i = 0; i < end; i++) sum+= diag.V_elem[i].diff;
+    if (sum < DD) return true;
+    return false;
+}

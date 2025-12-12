@@ -113,3 +113,10 @@ int getDD() {
     scanf("%d", &DD);
     return DD;
 }
+
+int getDP() {
+    int DP;
+    printf("Inserisci valore DP:");
+    scanf("%d", &DP);
+    return DP;
+}

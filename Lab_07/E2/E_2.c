@@ -78,7 +78,7 @@ int gen_diag(int n, int k, int pos, diag_t curr_diag, elem_t *elements, node_t *
             }
             tail->next->diag.n_elem = pos;
             tail = tail->next;
-            return count + 1;  // Incrementa count
+            return count + 1;
         }
         return count;
     }
@@ -89,7 +89,6 @@ int gen_diag(int n, int k, int pos, diag_t curr_diag, elem_t *elements, node_t *
             curr_diag.n_elem = pos + 1;
 
             if (elements[i].fin == 1) {
-                // Salva diagonale corrente
                 if ((hasACRO(curr_diag, pos + 1) == true) && (checkDIFF(curr_diag, pos + 1, DD) == true)) {
                     tail->next = NEWnode(NULL, curr_diag);
                     tail->next->diag.V_elem = (elem_t*)malloc(k * sizeof(elem_t));

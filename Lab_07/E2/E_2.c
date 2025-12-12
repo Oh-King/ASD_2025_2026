@@ -64,7 +64,9 @@ link NEWnode(link succ, diag_t diagonale) {
 int gen_diag(int n, int k, int pos, diag_t curr_diag, elem_t *elements,node_t *node, node_t *tail, int count, int last_dir) {
     int i;  //nuovo nodo in caso servisse
     if (pos >= k) {  //vuol dire che la diagonale corrente ha raggiunto la cardinalità massima
+        //verifico se ha almeno un elemento acrobatico e in caso aggiungo
         tail->next = NEWnode(NULL, curr_diag);
+        tail->next->diag.V_elem = (elem_t*)malloc(k*sizeof(elem_t));
         node = tail;
         tail = tail->next;
         return count+1;

@@ -31,6 +31,8 @@ elem_t* leggi_file();
 void solve();
 link NEWnode(link succ, diag_t diagonale);
 bool hasACRO(diag_t diag, int end);
+bool checkDIFF(diag_t diag, int end, int DD)
+int getDD();
 
 int main(void) {
 
@@ -67,15 +69,16 @@ int gen_diag(int n, int k, int pos, diag_t curr_diag, elem_t *elements,node_t *n
     int i;  //nuovo nodo in caso servisse
     if (pos >= k) {  //vuol dire che la diagonale corrente ha raggiunto la cardinalità massima
         //verifico se ha almeno un elemento acrobatico e in caso aggiungo
-        if (hasACRO(curr_diag, pos) == true) {
+        int DD = getDD();
+        if ((hasACRO(curr_diag, pos) == true) && (checkDIFF(curr_diag, pos, DD) == true)) {
             tail->next = NEWnode(NULL, curr_diag);
             tail->next->diag.V_elem = (elem_t*)malloc(k*sizeof(elem_t));
-            node = tail;
             tail = tail->next;
             return count+1;
         }
         return count;
     }
+
     for (i = 0; i < n; i++) {
         if (elements[i].dir_in == last_dir && (pos == 0 ? elements[i].prec == 0 : 1)) {
             curr_diag.V_elem[pos] = elements[i];
@@ -102,4 +105,11 @@ bool checkDIFF(diag_t diag, int end, int DD) {
     for (i = 0; i < end; i++) sum+= diag.V_elem[i].diff;
     if (sum < DD) return true;
     return false;
+}
+
+int getDD() {
+    int DD;
+    printf("Inserisci valore DD:");
+    scanf("%d", &DD);
+    return DD;
 }

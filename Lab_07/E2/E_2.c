@@ -152,22 +152,16 @@ bool checkVALID_PR(diag_t **PR, int DP){ //controllo se il programma è valido
     //NON controllo l'ultima casella per il bonus
     int tot_diff = 0;
     int i, j;
-    bool first_acr = false, second_acr = false; // alla fine se entrambi veri programma ok e posso vedere punteggio finale
+    bool front = false, back = false; // alla fine se entrambi veri programma ok e posso vedere punteggio finale
     bool first_seq = false, second_seq = false, both_acr_valid = false; //se both_acr_valid = true posso continuare con punteggio
     for(i = 0; i < MAX_DIAG; i++){
         for(j = 0; j < MAX_ELEM; j++){
             tot_diff += PR[i][j].V_elem->diff;
             if(PR[i][j].V_elem->typo != 0){
-                if(first_acr == false){
-                    first_acr = true;
-                    if(first_seq == false) first_seq = true;
-                }
-                else if(second_acr == false) {
-                    second_acr = true;
-                    if(first_seq == false) first_seq = true;
-                }
-                else if(first_seq == false) first_seq = true;
-                else if(first_seq == true) {
+                if (PR[i][j].V_elem->typo == 1) back = true;
+                else front = true;
+                if (first_seq == false) first_seq = true;
+                else {
                     second_seq = true;
                     both_acr_valid = true;
                 }
@@ -176,5 +170,7 @@ bool checkVALID_PR(diag_t **PR, int DP){ //controllo se il programma è valido
             }
         }
     }
-    if(tot_diff < DP){}
+    if(tot_diff < DP) {
+
+    }
 }

@@ -34,6 +34,7 @@ bool hasACRO(diag_t diag, int end);
 bool checkDIFF(diag_t diag, int end, int DD);
 int getDD();
 int getDP();
+bool checkVALID_PR(diag_t **PR, int DP);
 
 int main(void) {
 
@@ -134,10 +135,10 @@ int getDP() {
     return DP;
 }
 
-void gen_prog(diag_t *diag_V, int size, diag_t **curr_prog, diag_t **best_prog, int *mark, int row, int col, int sum_diff, int DP) {
+void gen_prog(diag_t *diag_V, int size, diag_t **curr_prog, diag_t **best_prog, int *mark, int row, int col, int curr_score, int best_score, int DP) {
     int i;
     if((row >= MAX_DIAG) && (col >= MAX_ELEM)){
-        if(checkVALID_PR == true)
+        if(checkVALID_PR() == true)
         calcSCORE()
 
     }

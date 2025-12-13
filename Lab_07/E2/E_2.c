@@ -170,7 +170,10 @@ bool checkVALID_PR(diag_t **PR, int DP){ //controllo se il programma è valido
             }
         }
     }
-    if(tot_diff < DP) {
-
-    }
+    if (both_acr_valid == false) return false;
+    for (i = 0; i < MAX_DIAG; i++)
+        for (j = 0 ;j < MAX_ELEM; j++)
+            tot_diff += PR[i][j].V_elem->diff;
+    if (tot_diff < DP) return true;
+    return false;
 }

@@ -66,8 +66,8 @@ link NEWnode(link succ, diag_t diagonale) {
     return node;
 }
 
-int gen_diag(int n, int k, int pos, diag_t curr_diag, elem_t *elements, node_t *node, node_t *tail, int count, int last_dir) {
-    int i, DD = getDD();
+int gen_diag(int n, int k, int pos, diag_t curr_diag, elem_t *elements, node_t *node, node_t *tail, int count, int last_dir, int DD) {
+    int i;
 
     if (pos >= k) {
         if ((hasACRO(curr_diag, pos) == true) && (checkDIFF(curr_diag, pos, DD) == true)) {
@@ -100,13 +100,12 @@ int gen_diag(int n, int k, int pos, diag_t curr_diag, elem_t *elements, node_t *
                     count++;
                 }
             } else {
-                count = gen_diag(n, k, pos + 1, curr_diag, elements, node, tail, count, elements[i].dir_ex);
+                count = gen_diag(n, k, pos + 1, curr_diag, elements, node, tail, count, elements[i].dir_ex, DD);
             }
         }
     }
     return count;
 }
-
 
 bool hasACRO(diag_t diag, int end) {
     int i;
@@ -133,4 +132,12 @@ int getDP() {
     printf("Inserisci valore DP:");
     scanf("%d", &DP);
     return DP;
+}
+
+void gen_prog(diag_t *diag_V, int size, diag_t **curr_prog, diag_t **best_prog, int *mark, int row, int col) {
+    int i;
+    if((row >= MAX_DIAG) && (col >= MAX_ELEM)){
+        int sum = 0;
+
+    }
 }

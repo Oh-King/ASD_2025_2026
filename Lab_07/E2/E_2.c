@@ -138,24 +138,41 @@ void gen_prog(diag_t *diag_V, int size, diag_t **curr_prog, diag_t **best_prog, 
     int i;
     if((row >= MAX_DIAG) && (col >= MAX_ELEM)){
         if(checkVALID_PR == true)
+        calcSCORE()
 
     }
 }
 
 bool checkVALID_PR(diag_t **PR, int DP){ //controllo se il programma è valido
+    //CONSIDERO GIA' "CORRETTE" LE DIAGONALI, QUINDI PER I DUE ACROBATICI IN SEQUENZA
+    //SUPPONGO USCITA DI PRIMO UGUALE A ENTRATA SECONDO
     //difficoltà minore di DP
     //almeno un acrobatico avanti e uno indietro nel PROGRAMMA
     //almeno due acrobatici in sequenza in una DIAGONALE
     //NON controllo l'ultima casella per il bonus
     int tot_diff = 0;
     int i, j;
-    bool first_acr = false, second_acr = false;
+    bool first_acr = false, second_acr = false; // alla fine se entrambi veri programma ok e posso vedere punteggio finale
+    bool first_seq = false, second_seq = false, both_acr_valid = false; //se both_acr_valid = true posso continuare con punteggio
     for(i = 0; i < MAX_DIAG; i++){
         for(j = 0; j < MAX_ELEM; j++){
             tot_diff += PR[i][j].V_elem->diff;
             if(PR[i][j].V_elem->typo != 0){
-                if(first_acr == false) first_acr = true;
-                else second_acr = true;
+                if(first_acr == false){
+                    first_acr = true;
+                    if(first_seq == false) first_seq = true;
+                }
+                else if(second_acr == false) {
+                    second_acr = true;
+                    if(first_seq == false) first_seq = true;
+                }
+                else if(first_seq == false) first_seq = true;
+                else if(first_seq == true) {
+                    second_seq = true;
+                    both_acr_valid = true;
+                }
+            }else {
+                if(first_seq == true) first_seq = false;
             }
         }
     }

@@ -134,10 +134,30 @@ int getDP() {
     return DP;
 }
 
-void gen_prog(diag_t *diag_V, int size, diag_t **curr_prog, diag_t **best_prog, int *mark, int row, int col) {
+void gen_prog(diag_t *diag_V, int size, diag_t **curr_prog, diag_t **best_prog, int *mark, int row, int col, int sum_diff, int DP) {
     int i;
     if((row >= MAX_DIAG) && (col >= MAX_ELEM)){
-        int sum = 0;
+        if(checkVALID_PR == true)
 
     }
+}
+
+bool checkVALID_PR(diag_t **PR, int DP){ //controllo se il programma è valido
+    //difficoltà minore di DP
+    //almeno un acrobatico avanti e uno indietro nel PROGRAMMA
+    //almeno due acrobatici in sequenza in una DIAGONALE
+    //NON controllo l'ultima casella per il bonus
+    int tot_diff = 0;
+    int i, j;
+    bool first_acr = false, second_acr = false;
+    for(i = 0; i < MAX_DIAG; i++){
+        for(j = 0; j < MAX_ELEM; j++){
+            tot_diff += PR[i][j].V_elem->diff;
+            if(PR[i][j].V_elem->typo != 0){
+                if(first_acr == false) first_acr = true;
+                else second_acr = true;
+            }
+        }
+    }
+    if(tot_diff < DP){}
 }

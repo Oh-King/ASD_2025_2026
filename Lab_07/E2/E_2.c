@@ -242,6 +242,7 @@ void solve(){
     link tail = head;
     int count = WRAP_gen_diag(N, elements, head, &tail, DD);
     diag_t *vett_diag = gen_vect_diag(count, head);
+
     free(elements);
 }
 
@@ -270,4 +271,8 @@ void WRAP_gen_prog(int N, int DP, int DD, diag_t *diag_vett){
     int *mark = calloc(N, sizeof(int));
     diag_t *curr_prog = malloc(3*sizeof(diag_t));
     diag_t *best_prog = malloc(3*sizeof(diag_t));
+
+    free(mark);
+    free(curr_prog);
+    free(best_prog);
 }

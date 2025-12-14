@@ -34,8 +34,11 @@ bool hasACRO(diag_t diag, int end);
 bool checkDIFF(diag_t diag, int end, int DD);
 int getDD();
 int getDP();
-bool checkVALID_PR(diag_t **PR, int DP);
+bool checkVALID_PR(diag_t *PR, int DP);
 diag_t* gen_vect_diag(int N, link head);
+void WRAP_gen_prog(int N, int DP, int DD, diag_t *diag_vett);
+int WRAP_gen_diag(int n, elem_t *elements, node_t *head, node_t **tail_ptr, int DD);
+float calcSCORE(diag_t *program);
 
 int main(void) {
 
@@ -116,7 +119,7 @@ bool hasACRO(diag_t diag, int end) {
 
 bool checkDIFF(diag_t diag, int end, int DD) {
     int i, sum = 0;
-    for (i = 0; i < end; i++) sum+= diag.V_elem[i].diff;
+    for (i = 0; i < end; i++) sum += diag.V_elem[i].diff;
     if (sum < DD) return true;
     return false;
 }
@@ -215,9 +218,9 @@ diag_t* gen_vect_diag(int N, link head){
 
 float calcSCORE(diag_t *program){
     int i, j;
-    float total_score = 0.0;
+    float total_score = 0;
     for(i = 0; i < MAX_DIAG; i++){
-        float diag_score = 0.0;
+        float diag_score = 0;
         for(j = 0; j < program[i].n_elem; j++){
             diag_score += program[i].V_elem[j].score;
         }

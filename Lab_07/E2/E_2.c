@@ -67,7 +67,7 @@ link NEWnode(link succ, diag_t diagonale) {
     return node;
 }
 
-int gen_diag(int n, int k, int pos, diag_t curr_diag, elem_t *elements, node_t *node, node_t *tail, int count, int last_dir, int DD) {
+int gen_diag(int n, int k, int pos, diag_t curr_diag, elem_t *elements,  node_t *tail, int count, int last_dir, int DD) {
     int i;
 
     if (pos >= k) {
@@ -101,7 +101,7 @@ int gen_diag(int n, int k, int pos, diag_t curr_diag, elem_t *elements, node_t *
                     count++;
                 }
             } else {
-                count = gen_diag(n, k, pos + 1, curr_diag, elements, node, tail, count, elements[i].dir_ex, DD);
+                count = gen_diag(n, k, pos + 1, curr_diag, elements, tail, count, elements[i].dir_ex, DD);
             }
         }
     }
@@ -138,10 +138,10 @@ int getDP() {
 void gen_prog(diag_t *diag_V, int size, diag_t *curr_prog, diag_t *best_prog,
               int *mark, int pos_diag, float *max_score, int DP, int DD) {
     if (pos_diag >= MAX_DIAG) { //caso base
-        if (checkVALID_PR(&curr_prog, DP) == false) { //programma provato non è ok
+        if (checkVALID_PR(curr_prog, DP) == false) { //programma provato non è ok
             return;
         }
-        float curr_score = calcSCORE(curr_prog);
+        float curr_score = calcSCORE(curr_prog); //(N.B)
 
         if (curr_score > *max_score) { //se curr_score è il migliore, aggiorno max_score
             *max_score = curr_score;
@@ -236,5 +236,11 @@ void solve(){
     int DP = getDP();
 
 
+
+
     free(elements);
+}
+
+int WRAP_gen_diag(){
+
 }

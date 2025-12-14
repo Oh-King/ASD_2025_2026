@@ -234,25 +234,23 @@ void solve(){
     elem_t *elements = leggi_file(&N);
     int DD = getDD();
     int DP = getDP();
-    link head;
+    link head = malloc(sizeof(node_t)); //uso nodo fittizio
     head->next = NULL;
-    int count = WRAP_gen_diag(N, elements,);
-
+    link tail = head;
+    int count = WRAP_gen_diag(N, elements, head, &tail, DD);
+    diag_t *vett_diag = gen_vect_diag(count, head);
     free(elements);
 }
 
 int WRAP_gen_diag(int n, elem_t *elements, node_t *head, node_t **tail_ptr, int DD) {
     int total_count = 0;
     diag_t curr_diag;
-
-    // Genera diagonali di ogni lunghezza possibile (1 a 5)
+    int len;
+    //costruisco diagonali lunghezza 1 a 5
     for (int len = 1; len <= MAX_ELEM; len++) {
         curr_diag.V_elem = malloc(len * sizeof(elem_t));
 
-        total_count = gen_diag(n, len, 0, curr_diag, elements,
-                               *tail_ptr, total_count, 1, DD);
-
-        // Aggiorna tail (gen_diag potrebbe averla spostata)
+        total_count = gen_diag(n, len, 0, curr_diag, elements,*tail_ptr, total_count, 1, DD);
         while ((*tail_ptr)->next != NULL) {
             *tail_ptr = (*tail_ptr)->next;
         }
@@ -261,4 +259,12 @@ int WRAP_gen_diag(int n, elem_t *elements, node_t *head, node_t **tail_ptr, int 
     }
 
     return total_count;
+}
+
+void WRAP_gen_prog(int N, int DP, int DD, diag_t *diag_vett){
+    int i;
+    float max_score = -1;
+    int *mark = calloc(N, sizeof(int));
+    diag_t *curr_prog = malloc(3*sizeof(diag_t));
+    diag_t *best_prog = malloc(3*sizeof(diag_t));
 }

@@ -27,7 +27,7 @@ typedef struct node_t {
 
 typedef node_t *link;
 
-elem_t* leggi_file();
+elem_t* leggi_file(int *N);
 void solve();
 link NEWnode(link succ, diag_t diagonale);
 bool hasACRO(diag_t diag, int end);
@@ -42,12 +42,11 @@ int main(void) {
     return 0;
 }
 
-elem_t* leggi_file() {
+elem_t* leggi_file(int *N) {
     FILE *fp = fopen("elementi.txt", "r");
-    int N;
     int i = 0;
-    fscanf(fp, "%d", &N);
-    elem_t *elements = (elem_t*)malloc(N*sizeof(elem_t));
+    fscanf(fp, "%d", N);
+    elem_t *elements = (elem_t*)malloc(*N*sizeof(elem_t));
     while (fscanf(fp, "%s %d %d %d %d %d %f %d",
         elements[i].name,
         &elements[i].typo,
@@ -168,7 +167,7 @@ void gen_prog(diag_t *diag_V, int size, diag_t *curr_prog, diag_t *best_prog,
     }
 }
 
-bool checkVALID_PR(diag_t **PR, int DP){ //controllo se il programma è valido
+bool checkVALID_PR(diag_t *PR, int DP){ //controllo se il programma è valido
     //CONSIDERO GIA' "CORRETTE" LE DIAGONALI, QUINDI PER I DUE ACROBATICI IN SEQUENZA
     //SUPPONGO USCITA DI PRIMO UGUALE A ENTRATA SECONDO
     //difficoltà minore di DP
@@ -178,22 +177,21 @@ bool checkVALID_PR(diag_t **PR, int DP){ //controllo se il programma è valido
     int tot_diff = 0;
     int i, j;
     bool front = false, back = false; // alla fine se entrambi veri programma ok e posso vedere punteggio finale
-    bool first_seq = false, second_seq = false, both_acr_valid = false; //se both_acr_valid = true posso continuare con punteggio
+    bool second_seq = false, both_acr_valid = false; //se both_acr_valid = true posso continuare con punteggio
     for(i = 0; i < MAX_DIAG; i++){
-        int prev_diag = -1;
-        for(j = 0; j < PR[i]->n_elem; j++){
-            tot_diff += PR[i]->V_elem[j].diff;
-            if (j != 0 ) prev_diag = 0;
-            if(PR[i]->V_elem[j].typo != 0){
-                if (PR[i]->V_elem[j].typo == 1) back = true;
+        bool first_seq = false;
+        for(j = 0; j < PR[i].n_elem; j++){
+            tot_diff += PR[i].V_elem[j].diff;
+            if(PR[i].V_elem[j].typo != 0){
+                if (PR[i].V_elem[j].typo == 1) back = true;
                 else front = true;
                 if (first_seq == false) first_seq = true;
                 else {
                     second_seq = true;
-                    if (prev_diag != -1) both_acr_valid = true;
+                    both_acr_valid = true;
                 }
             }else {
-                if(first_seq == true) first_seq = false;
+                if(first_seq == true) first_seq = false; //resetto
             }
         }
     }
@@ -229,4 +227,14 @@ float calcSCORE(diag_t *program){
         total_score += diag_score;
     }
     return total_score;
+}
+
+void solve(){
+    int N;
+    elem_t *elements = leggi_file(&N);
+    int DD = getDD();
+    int DP = getDP();
+
+
+    free(elements);
 }

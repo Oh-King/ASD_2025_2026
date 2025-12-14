@@ -234,13 +234,20 @@ void solve(){
     elem_t *elements = leggi_file(&N);
     int DD = getDD();
     int DP = getDP();
-
-
-
+    link head;
+    int count = WRAP_gen_diag(N,elements, DD, head);
 
     free(elements);
 }
 
-int WRAP_gen_diag(){
-
+int WRAP_gen_diag(int N, elem_t* elements, int DD, link head){
+    diag_t curr_diag;
+    int count=0;
+    int k;
+    head->next = NULL;
+    link tail = head;
+    for(k = 1; k <= 5; k++){
+        count = gen_diag(N, k, 0, curr_diag, elements, tail, count, 1, DD);
+    }
+    return count;
 }

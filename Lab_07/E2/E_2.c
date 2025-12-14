@@ -183,13 +183,14 @@ bool checkVALID_PR(diag_t **PR, int DP){ //controllo se il programma è valido
         int prev_diag = -1;
         for(j = 0; j < PR[i]->n_elem; j++){
             tot_diff += PR[i]->V_elem[j].diff;
+            prev_diag = 0;
             if(PR[i]->V_elem[j].typo != 0){
                 if (PR[i]->V_elem[j].typo == 1) back = true;
                 else front = true;
                 if (first_seq == false) first_seq = true;
                 else {
                     second_seq = true;
-                    both_acr_valid = true;
+                    if (prev_diag != -1) both_acr_valid = true;
                 }
             }else {
                 if(first_seq == true) first_seq = false;

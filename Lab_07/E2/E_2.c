@@ -42,6 +42,8 @@ float calcSCORE(diag_t *program);
 
 int main(void) {
 
+    solve();
+
     return 0;
 }
 
@@ -251,7 +253,7 @@ int WRAP_gen_diag(int n, elem_t *elements, node_t *head, node_t **tail_ptr, int 
     diag_t curr_diag;
     int len;
     //costruisco diagonali lunghezza 1 a 5
-    for (int len = 1; len <= MAX_ELEM; len++) {
+    for (len = 1; len <= MAX_ELEM; len++) {
         curr_diag.V_elem = malloc(len * sizeof(elem_t));
 
         total_count = gen_diag(n, len, 0, curr_diag, elements,*tail_ptr, total_count, 1, DD);
@@ -269,8 +271,10 @@ void WRAP_gen_prog(int N, int DP, int DD, diag_t *diag_vett){
     int i;
     float max_score = -1;
     int *mark = calloc(N, sizeof(int));
-    diag_t *curr_prog = malloc(3*sizeof(diag_t));
+    diag_t *curr_prog = malloc(3*sizeof(diag_t)); // non tratto gestione NULL per allocazione memoria
     diag_t *best_prog = malloc(3*sizeof(diag_t));
+
+    gen_prog(diag_vett, N, curr_prog, best_prog, mark, 0, &max_score, DP, DD);
 
     free(mark);
     free(curr_prog);

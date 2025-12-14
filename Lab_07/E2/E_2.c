@@ -139,7 +139,7 @@ int getDP() {
 void gen_prog(diag_t *diag_V, int size, diag_t *curr_prog, diag_t *best_prog,
               int *mark, int pos_diag, float *max_score, int DP, int DD) {
     if (pos_diag >= MAX_DIAG) { //caso base
-        if (checkVALID_PR(curr_prog, DP) == false) { //programma provato non è ok
+        if (checkVALID_PR(&curr_prog, DP) == false) { //programma provato non è ok
             return;
         }
         float curr_score = calcSCORE(curr_prog);
@@ -214,3 +214,5 @@ diag_t* gen_vect_diag(int N, link head){
     }
     return vett;
 }
+
+float calcSCORE()

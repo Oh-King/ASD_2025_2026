@@ -35,6 +35,7 @@ bool checkDIFF(diag_t diag, int end, int DD);
 int getDD();
 int getDP();
 bool checkVALID_PR(diag_t **PR, int DP);
+diag_t* gen_vect_diag(int N, link head);
 
 int main(void) {
 
@@ -135,12 +136,35 @@ int getDP() {
     return DP;
 }
 
-void gen_prog(diag_t *diag_V, int size, diag_t **curr_prog, diag_t **best_prog, int *mark, int row, int col, int curr_score, int best_score, int DP) {
-    int i;
-    if((row >= MAX_DIAG) && (col >= MAX_ELEM)){
-        if(checkVALID_PR() == true)
-        calcSCORE()
+void gen_prog(diag_t *diag_V, int size, diag_t *curr_prog, diag_t *best_prog,
+              int *mark, int pos_diag, float *max_score, int DP, int DD) {
+    if (pos_diag >= MAX_DIAG) { //caso base
+        if (checkVALID_PR(curr_prog, DP) == false) { //programma provato non è ok
+            return;
+        }
+        float curr_score = calcSCORE(curr_prog);
 
+        if (curr_score > *max_score) { //se curr_score è il migliore, aggiorno max_score
+            *max_score = curr_score;
+            for (int i = 0; i < MAX_DIAG; i++) { //e copio programma
+                best_prog[i] = curr_prog[i];
+                best_prog[i].V_elem = malloc(curr_prog[i].n_elem * sizeof(elem_t));
+                for (int j = 0; j < curr_prog[i].n_elem; j++) {
+                    best_prog[i].V_elem[j] = curr_prog[i].V_elem[j];
+                }
+            }
+        }
+        return;
+    }
+    //ricorsione
+    for (int i = 0; i < size; i++) {
+        if (mark[i] == 0) {
+            mark[i] = 1;
+            curr_prog[pos_diag] = diag_V[i];
+            gen_prog(diag_V, size, curr_prog, best_prog, mark, pos_diag + 1,
+                     max_score, DP, DD);
+            mark[i] = 0;
+        }
     }
 }
 
@@ -156,10 +180,11 @@ bool checkVALID_PR(diag_t **PR, int DP){ //controllo se il programma è valido
     bool front = false, back = false; // alla fine se entrambi veri programma ok e posso vedere punteggio finale
     bool first_seq = false, second_seq = false, both_acr_valid = false; //se both_acr_valid = true posso continuare con punteggio
     for(i = 0; i < MAX_DIAG; i++){
-        for(j = 0; j < MAX_ELEM; j++){
-            tot_diff += PR[i][j].V_elem->diff;
-            if(PR[i][j].V_elem->typo != 0){
-                if (PR[i][j].V_elem->typo == 1) back = true;
+        int prev_diag = -1;
+        for(j = 0; j < PR[i]->n_elem; j++){
+            tot_diff += PR[i]->V_elem[j].diff;
+            if(PR[i]->V_elem[j].typo != 0){
+                if (PR[i]->V_elem[j].typo == 1) back = true;
                 else front = true;
                 if (first_seq == false) first_seq = true;
                 else {
@@ -172,9 +197,19 @@ bool checkVALID_PR(diag_t **PR, int DP){ //controllo se il programma è valido
         }
     }
     if (both_acr_valid == false) return false;
-    for (i = 0; i < MAX_DIAG; i++)
-        for (j = 0 ;j < MAX_ELEM; j++)
-            tot_diff += PR[i][j].V_elem->diff;
-    if (tot_diff < DP) return true;
+    if((front != true) || (back != true)) return false;
+    if (tot_diff <= DP) return true;
     return false;
+}
+
+diag_t* gen_vect_diag(int N, link head){
+    int i, j;
+    link curr_node;
+    diag_t* vett = (diag_t*)malloc(N*sizeof(diag_t));
+    for(i = 0, curr_node = head; (curr_node != NULL) && (i < N); curr_node = curr_node->next, i++){
+        vett[i].n_elem = curr_node->diag.n_elem;
+        vett[i].V_elem = (elem_t*)malloc(vett[i].n_elem *sizeof(elem_t));
+        for(j = 0; j < vett[i].n_elem; j++) vett[i].V_elem[j] = curr_node->diag.V_elem[j];
+    }
+    return vett;
 }

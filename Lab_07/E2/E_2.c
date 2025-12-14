@@ -215,4 +215,18 @@ diag_t* gen_vect_diag(int N, link head){
     return vett;
 }
 
-float calcSCORE()
+float calcSCORE(diag_t *program){
+    int i, j;
+    float total_score = 0.0;
+    for(i = 0; i < MAX_DIAG; i++){
+        float diag_score = 0.0;
+        for(j = 0; j < program[i].n_elem; j++){
+            diag_score += program[i].V_elem[j].score;
+        }
+        if((i == 2) && (j == program[i].n_elem-1)){
+            if(program[i].V_elem[j].diff >= 8) diag_score = diag_score*1.5;
+        }
+        total_score += diag_score;
+    }
+    return total_score;
+}

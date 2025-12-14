@@ -223,8 +223,8 @@ float calcSCORE(diag_t *program){
         for(j = 0; j < program[i].n_elem; j++){
             diag_score += program[i].V_elem[j].score;
         }
-        if((i == 2) && (j == program[i].n_elem-1)){
-            if(program[i].V_elem[j].diff >= 8) diag_score = diag_score*1.5;
+        if((i == 2) && (j == program[i].n_elem)){
+            if((program[i].V_elem[j-1].diff >= 8) && (program[i].V_elem[j-1].fin == 1)) diag_score = diag_score*1.5;
         }
         total_score += diag_score;
     }

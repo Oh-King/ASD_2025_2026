@@ -145,8 +145,19 @@ int getDP() {
 
 void gen_prog(diag_t *diag_V, int size, diag_t *curr_prog, diag_t *best_prog,
               int *mark, int pos_diag, float *max_score, int DP, int DD) {
-    printf("entro in gen_prog per la volta n: %d\n", PRINT_COUNTER);
+    printf("entro in gen_prog per la volta n: %d, MAX SCORE = %d \n", PRINT_COUNTER, *max_score);
     PRINT_COUNTER++;
+    //se ho già superato DP, non ha senso continuare
+    if (pos_diag > 0) {
+        int tot_diff = 0;
+        for (int k = 0; k < pos_diag; k++) {
+            for (int j = 0; j < curr_prog[k].n_elem; j++) {
+                tot_diff += curr_prog[k].V_elem[j].diff;
+            }
+        }
+        if (tot_diff > DP) return; // Pota questo ramo
+    }
+
     if (pos_diag >= MAX_DIAG) { //caso base
         if (checkVALID_PR(curr_prog, DP) == false) { //programma provato non è ok
             return;

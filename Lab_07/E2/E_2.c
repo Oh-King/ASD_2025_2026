@@ -41,7 +41,7 @@ int WRAP_gen_diag(int n, elem_t *elements, node_t *head, node_t **tail_ptr, int 
 int gen_diag(int n, int k, int pos, diag_t curr_diag, elem_t *elements, node_t **tail_ptr, int count, int last_dir, int DD);
 float calcSCORE(diag_t *program);
 
-int PRINT_COUNTER = 0;
+int PRINT_COUNTER = 0; //per debug manuale
 
 int main(void) {
 
@@ -145,7 +145,7 @@ int getDP() {
 
 void gen_prog(diag_t *diag_V, int size, diag_t *curr_prog, diag_t *best_prog,
               int *mark, int pos_diag, float *max_score, int DP, int DD) {
-    printf("entro in gen_prog per la volta n: %d, MAX SCORE = %f \n", PRINT_COUNTER, *max_score);
+    printf("entro in gen_prog per la volta n: %d, MAX SCORE = %f \n", PRINT_COUNTER, *max_score); //debug manuale
     PRINT_COUNTER++;
     //se ho già superato DP, non ha senso continuare
     if (pos_diag > 0) {
@@ -257,8 +257,8 @@ float calcSCORE(diag_t *program){
 void solve(){
     int N;
     elem_t *elements = leggi_file(&N);
-    int DD = getDD();
-    int DP = getDP();
+    int DD = 10;//getDD();
+    int DP = 20; //getDP();
     link head = malloc(sizeof(node_t)); //uso nodo fittizio
     head->next = NULL;
     link tail = head;
@@ -267,7 +267,7 @@ void solve(){
     diag_t *vett_diag = gen_vect_diag(count, head);
     //printf("Ho generato il vettore\n");
     WRAP_gen_prog(count, DP, DD, vett_diag);
-    printf("Ho generato i vari programmi");
+    printf("Ho generato i vari programmi"); //verifica per debug manuale
 
     free(elements);
     return;

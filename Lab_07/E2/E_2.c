@@ -244,6 +244,7 @@ void solve(){
     link tail = head;
     int count = WRAP_gen_diag(N, elements, head, &tail, DD);
     diag_t *vett_diag = gen_vect_diag(count, head);
+    WRAP_gen_prog(N, DP, DD, vett_diag);
 
     free(elements);
 }

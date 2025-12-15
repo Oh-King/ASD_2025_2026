@@ -276,6 +276,8 @@ void WRAP_gen_prog(int N, int DP, int DD, diag_t *diag_vett){
 
     gen_prog(diag_vett, N, curr_prog, best_prog, mark, 0, &max_score, DP, DD);
 
+    printf("Il massimo punteggio è:%f", max_score);
+
     free(mark);
     free(curr_prog);
     free(best_prog);

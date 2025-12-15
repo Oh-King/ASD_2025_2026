@@ -38,6 +38,7 @@ bool checkVALID_PR(diag_t *PR, int DP);
 diag_t* gen_vect_diag(int N, link head);
 void WRAP_gen_prog(int N, int DP, int DD, diag_t *diag_vett);
 int WRAP_gen_diag(int n, elem_t *elements, node_t *head, node_t **tail_ptr, int DD);
+int gen_diag(int n, int k, int pos, diag_t curr_diag, elem_t *elements, node_t **tail_ptr, int count, int last_dir, int DD);
 float calcSCORE(diag_t *program);
 
 int main(void) {
@@ -72,18 +73,18 @@ link NEWnode(link succ, diag_t diagonale) {
     return node;
 }
 
-int gen_diag(int n, int k, int pos, diag_t curr_diag, elem_t *elements,  node_t *tail, int count, int last_dir, int DD) {
+int gen_diag(int n, int k, int pos, diag_t curr_diag, elem_t *elements, node_t **tail_ptr, int count, int last_dir, int DD) {
     int i;
 
     if (pos >= k) {
         if ((hasACRO(curr_diag, pos) == true) && (checkDIFF(curr_diag, pos, DD) == true)) {
-            tail->next = NEWnode(NULL, curr_diag);
-            tail->next->diag.V_elem = (elem_t*)malloc(k * sizeof(elem_t));
+            (*tail_ptr)->next = NEWnode(NULL, curr_diag);
+            (*tail_ptr)->next->diag.V_elem = (elem_t*)malloc(k * sizeof(elem_t));
             for (i = 0; i < pos; i++) {
-                tail->next->diag.V_elem[i] = curr_diag.V_elem[i];
+                (*tail_ptr)->next->diag.V_elem[i] = curr_diag.V_elem[i];
             }
-            tail->next->diag.n_elem = pos;
-            tail = tail->next;
+            (*tail_ptr)->next->diag.n_elem = pos;
+            *tail_ptr = (*tail_ptr)->next;
             return count + 1;
         }
         return count;
@@ -96,17 +97,17 @@ int gen_diag(int n, int k, int pos, diag_t curr_diag, elem_t *elements,  node_t 
 
             if (elements[i].fin == 1) {
                 if ((hasACRO(curr_diag, pos + 1) == true) && (checkDIFF(curr_diag, pos + 1, DD) == true)) {
-                    tail->next = NEWnode(NULL, curr_diag);
-                    tail->next->diag.V_elem = (elem_t*)malloc(k * sizeof(elem_t));
+                    (*tail_ptr)->next = NEWnode(NULL, curr_diag);
+                    (*tail_ptr)->next->diag.V_elem = (elem_t*)malloc(k * sizeof(elem_t));
                     for (int j = 0; j <= pos; j++) {
-                        tail->next->diag.V_elem[j] = curr_diag.V_elem[j];
+                        (*tail_ptr)->next->diag.V_elem[j] = curr_diag.V_elem[j];
                     }
-                    tail->next->diag.n_elem = pos + 1;
-                    tail = tail->next;
+                    (*tail_ptr)->next->diag.n_elem = pos + 1;
+                    *tail_ptr = (*tail_ptr)->next;
                     count++;
                 }
             } else {
-                count = gen_diag(n, k, pos + 1, curr_diag, elements, tail, count, elements[i].dir_ex, DD);
+                count = gen_diag(n, k, pos + 1, curr_diag, elements, tail_ptr, count, elements[i].dir_ex, DD);
             }
         }
     }
@@ -256,11 +257,9 @@ int WRAP_gen_diag(int n, elem_t *elements, node_t *head, node_t **tail_ptr, int 
     //costruisco diagonali lunghezza 1 a 5
     for (len = 1; len <= MAX_ELEM; len++) {
         curr_diag.V_elem = malloc(len * sizeof(elem_t));
+        curr_diag.n_elem = 0;
 
-        total_count = gen_diag(n, len, 0, curr_diag, elements,*tail_ptr, total_count, 1, DD);
-        while ((*tail_ptr)->next != NULL) {
-            *tail_ptr = (*tail_ptr)->next;
-        }
+        total_count = gen_diag(n, len, 0, curr_diag, elements, tail_ptr, total_count, 1, DD);
 
         free(curr_diag.V_elem);
     }
@@ -274,6 +273,13 @@ void WRAP_gen_prog(int N, int DP, int DD, diag_t *diag_vett){
     int *mark = calloc(N, sizeof(int));
     diag_t *curr_prog = malloc(3*sizeof(diag_t)); // non tratto gestione NULL per allocazione memoria
     diag_t *best_prog = malloc(3*sizeof(diag_t));
+
+    for (i = 0; i < 3; i++) {
+        curr_prog[i].n_elem = 0;
+        curr_prog[i].V_elem = NULL;
+        best_prog[i].n_elem = 0;
+        best_prog[i].V_elem = NULL;
+    }
 
     gen_prog(diag_vett, N, curr_prog, best_prog, mark, 0, &max_score, DP, DD);
 

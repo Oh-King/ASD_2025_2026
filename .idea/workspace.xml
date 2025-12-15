@@ -16,7 +16,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="77164d9d-02cc-4ad2-8318-1ca53fbc7f4e" name="Changes" comment="func calcSCORE decl">
+    <list default="true" id="77164d9d-02cc-4ad2-8318-1ca53fbc7f4e" name="Changes" comment="try debug">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -67,35 +67,35 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;C/C++ File.E_1.c (1).executor&quot;: &quot;Run&quot;,
-    &quot;C/C++ File.E_1.c.executor&quot;: &quot;Run&quot;,
-    &quot;C/C++ File.E_2.c.executor&quot;: &quot;Run&quot;,
-    &quot;C/C++ File.E_3.c.executor&quot;: &quot;Run&quot;,
-    &quot;C/C++ File.E_4.c.executor&quot;: &quot;Run&quot;,
-    &quot;C/C++ File.main.c.executor&quot;: &quot;Debug&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.RadMigrateCodeStyle&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
-    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/mf1ma/Desktop/PoliTO/Secondo_anno/Algoritmi_e_strutture_dati/Laboratori&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "C/C++ File.E_1.c (1).executor": "Run",
+    "C/C++ File.E_1.c.executor": "Run",
+    "C/C++ File.E_2.c.executor": "Run",
+    "C/C++ File.E_3.c.executor": "Run",
+    "C/C++ File.E_4.c.executor": "Run",
+    "C/C++ File.main.c.executor": "Debug",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.RadMigrateCodeStyle": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.readMode.enableVisualFormatting": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "cf.first.check.clang-format": "false",
+    "cidr.known.project.marker": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "C:/Users/mf1ma/Desktop/PoliTO/Secondo_anno/Algoritmi_e_strutture_dati/Laboratori",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "settings.sync",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="C/C++ File.E_2.c">
     <configuration name="E_2.c" type="CppFileRunConfiguration" factoryName="CppFileRunConfiguration" temporary="true" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Laboratori" TARGET_NAME="E_2.c" CONFIG_NAME="E_2.c">
       <option name="sourceFile" value="Lab_07\E2\E_2.c" />
@@ -165,46 +165,7 @@
       <workItem from="1765624447300" duration="155000" />
       <workItem from="1765644287885" duration="5076000" />
       <workItem from="1765711204091" duration="2005000" />
-    </task>
-    <task id="LOCAL-00032" summary="5.2 done">
-      <option name="closed" value="true" />
-      <created>1763484628370</created>
-      <option name="number" value="00032" />
-      <option name="presentableId" value="LOCAL-00032" />
-      <option name="project" value="LOCAL" />
-      <updated>1763484628370</updated>
-    </task>
-    <task id="LOCAL-00033" summary="final up">
-      <option name="closed" value="true" />
-      <created>1763487211184</created>
-      <option name="number" value="00033" />
-      <option name="presentableId" value="LOCAL-00033" />
-      <option name="project" value="LOCAL" />
-      <updated>1763487211184</updated>
-    </task>
-    <task id="LOCAL-00034" summary="final up">
-      <option name="closed" value="true" />
-      <created>1764108638525</created>
-      <option name="number" value="00034" />
-      <option name="presentableId" value="LOCAL-00034" />
-      <option name="project" value="LOCAL" />
-      <updated>1764108638525</updated>
-    </task>
-    <task id="LOCAL-00035" summary="final up">
-      <option name="closed" value="true" />
-      <created>1764109204163</created>
-      <option name="number" value="00035" />
-      <option name="presentableId" value="LOCAL-00035" />
-      <option name="project" value="LOCAL" />
-      <updated>1764109204163</updated>
-    </task>
-    <task id="LOCAL-00036" summary="edit backtrack">
-      <option name="closed" value="true" />
-      <created>1764109275398</created>
-      <option name="number" value="00036" />
-      <option name="presentableId" value="LOCAL-00036" />
-      <option name="project" value="LOCAL" />
-      <updated>1764109275398</updated>
+      <workItem from="1765747838078" duration="7786000" />
     </task>
     <task id="LOCAL-00037" summary="todo: f isLESSorEQUAL">
       <option name="closed" value="true" />
@@ -558,7 +519,47 @@
       <option name="project" value="LOCAL" />
       <updated>1765713987785</updated>
     </task>
-    <option name="localTasksCounter" value="81" />
+    <task id="LOCAL-00081" summary="proto update">
+      <option name="closed" value="true" />
+      <created>1765750745575</created>
+      <option name="number" value="00081" />
+      <option name="presentableId" value="LOCAL-00081" />
+      <option name="project" value="LOCAL" />
+      <updated>1765750745575</updated>
+    </task>
+    <task id="LOCAL-00082" summary="memory leak correction">
+      <option name="closed" value="true" />
+      <created>1765751080239</created>
+      <option name="number" value="00082" />
+      <option name="presentableId" value="LOCAL-00082" />
+      <option name="project" value="LOCAL" />
+      <updated>1765751080239</updated>
+    </task>
+    <task id="LOCAL-00083" summary="something with initialization needs fix">
+      <option name="closed" value="true" />
+      <created>1765751516393</created>
+      <option name="number" value="00083" />
+      <option name="presentableId" value="LOCAL-00083" />
+      <option name="project" value="LOCAL" />
+      <updated>1765751516393</updated>
+    </task>
+    <task id="LOCAL-00084" summary="first compile">
+      <option name="closed" value="true" />
+      <created>1765789522812</created>
+      <option name="number" value="00084" />
+      <option name="presentableId" value="LOCAL-00084" />
+      <option name="project" value="LOCAL" />
+      <updated>1765789522812</updated>
+    </task>
+    <task id="LOCAL-00085" summary="try debug">
+      <option name="closed" value="true" />
+      <created>1765796080258</created>
+      <option name="number" value="00085" />
+      <option name="presentableId" value="LOCAL-00085" />
+      <option name="project" value="LOCAL" />
+      <updated>1765796080258</updated>
+    </task>
+    <option name="localTasksCounter" value="86" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -582,11 +583,6 @@
       <path value="$PROJECT_DIR$/Lab_03" />
       <path value="$PROJECT_DIR$/Lab_04" />
     </ignored-roots>
-    <MESSAGE value="structs declarations update" />
-    <MESSAGE value="init functions" />
-    <MESSAGE value="update declarations and function signatures" />
-    <MESSAGE value="update with pointer to struct &quot;link&quot;, errors with definition" />
-    <MESSAGE value=".." />
     <MESSAGE value=".bin bon" />
     <MESSAGE value="bon bin" />
     <MESSAGE value="fun decl" />
@@ -607,7 +603,12 @@
     <MESSAGE value="check for same diagonal" />
     <MESSAGE value="upd check" />
     <MESSAGE value="func calcSCORE decl" />
-    <option name="LAST_COMMIT_MESSAGE" value="func calcSCORE decl" />
+    <MESSAGE value="proto update" />
+    <MESSAGE value="memory leak correction" />
+    <MESSAGE value="something with initialization needs fix" />
+    <MESSAGE value="first compile" />
+    <MESSAGE value="try debug" />
+    <option name="LAST_COMMIT_MESSAGE" value="try debug" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>

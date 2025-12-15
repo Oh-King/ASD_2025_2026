@@ -145,7 +145,7 @@ int getDP() {
 
 void gen_prog(diag_t *diag_V, int size, diag_t *curr_prog, diag_t *best_prog,
               int *mark, int pos_diag, float *max_score, int DP, int DD) {
-    printf("entro in gen_prog per la volta n: %d, MAX SCORE = %d \n", PRINT_COUNTER, *max_score);
+    printf("entro in gen_prog per la volta n: %d, MAX SCORE = %f \n", PRINT_COUNTER, *max_score);
     PRINT_COUNTER++;
     //se ho già superato DP, non ha senso continuare
     if (pos_diag > 0) {
@@ -155,7 +155,7 @@ void gen_prog(diag_t *diag_V, int size, diag_t *curr_prog, diag_t *best_prog,
                 tot_diff += curr_prog[k].V_elem[j].diff;
             }
         }
-        if (tot_diff > DP) return; // Pota questo ramo
+        if (tot_diff > DP) return; //so già che non andrà bene, taglio fuori
     }
 
     if (pos_diag >= MAX_DIAG) { //caso base
@@ -257,8 +257,8 @@ float calcSCORE(diag_t *program){
 void solve(){
     int N;
     elem_t *elements = leggi_file(&N);
-    int DD = 150; //getDD();
-    int DP = 600; //getDP();
+    int DD = getDD();
+    int DP = getDP();
     link head = malloc(sizeof(node_t)); //uso nodo fittizio
     head->next = NULL;
     link tail = head;

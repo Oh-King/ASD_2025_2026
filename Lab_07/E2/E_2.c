@@ -41,6 +41,8 @@ int WRAP_gen_diag(int n, elem_t *elements, node_t *head, node_t **tail_ptr, int 
 int gen_diag(int n, int k, int pos, diag_t curr_diag, elem_t *elements, node_t **tail_ptr, int count, int last_dir, int DD);
 float calcSCORE(diag_t *program);
 
+int PRINT_COUNTER = 0;
+
 int main(void) {
 
     solve();
@@ -143,6 +145,8 @@ int getDP() {
 
 void gen_prog(diag_t *diag_V, int size, diag_t *curr_prog, diag_t *best_prog,
               int *mark, int pos_diag, float *max_score, int DP, int DD) {
+    printf("entro in gen_prog per la volta n: %d\n", PRINT_COUNTER);
+    PRINT_COUNTER++;
     if (pos_diag >= MAX_DIAG) { //caso base
         if (checkVALID_PR(curr_prog, DP) == false) { //programma provato non è ok
             return;
@@ -166,7 +170,7 @@ void gen_prog(diag_t *diag_V, int size, diag_t *curr_prog, diag_t *best_prog,
         if (mark[i] == 0) {
             mark[i] = 1;
             curr_prog[pos_diag] = diag_V[i];
-            gen_prog(diag_V, size, curr_prog, best_prog, mark, pos_diag + 1,
+            gen_prog(diag_V, size, curr_prog, best_prog, mark, (pos_diag+1),
                      max_score, DP, DD);
             mark[i] = 0;
         }
@@ -211,7 +215,7 @@ diag_t* gen_vect_diag(int N, link head){
     int i, j;
     link curr_node;
     diag_t* vett = (diag_t*)malloc(N*sizeof(diag_t));
-    for(i = 0, curr_node = head; (curr_node != NULL) && (i < N); curr_node = curr_node->next, i++){
+    for(i = 0, curr_node = head->next; (curr_node != NULL) && (i < N); curr_node = curr_node->next, i++){
         vett[i].n_elem = curr_node->diag.n_elem;
         vett[i].V_elem = (elem_t*)malloc(vett[i].n_elem *sizeof(elem_t));
         for(j = 0; j < vett[i].n_elem; j++) vett[i].V_elem[j] = curr_node->diag.V_elem[j];
@@ -238,16 +242,20 @@ float calcSCORE(diag_t *program){
 void solve(){
     int N;
     elem_t *elements = leggi_file(&N);
-    int DD = getDD();
-    int DP = getDP();
+    int DD = 150; //getDD();
+    int DP = 600; //getDP();
     link head = malloc(sizeof(node_t)); //uso nodo fittizio
     head->next = NULL;
     link tail = head;
     int count = WRAP_gen_diag(N, elements, head, &tail, DD);
+    printf("N°diagonali generate: %d\n", count);
     diag_t *vett_diag = gen_vect_diag(count, head);
-    WRAP_gen_prog(N, DP, DD, vett_diag);
+    //printf("Ho generato il vettore\n");
+    WRAP_gen_prog(count, DP, DD, vett_diag);
+    printf("Ho generato i vari programmi");
 
     free(elements);
+    return;
 }
 
 int WRAP_gen_diag(int n, elem_t *elements, node_t *head, node_t **tail_ptr, int DD) {
@@ -283,7 +291,14 @@ void WRAP_gen_prog(int N, int DP, int DD, diag_t *diag_vett){
 
     gen_prog(diag_vett, N, curr_prog, best_prog, mark, 0, &max_score, DP, DD);
 
-    printf("Il massimo punteggio è:%f", max_score);
+    printf("Il massimo punteggio corrisponde a:%f", max_score);
+    printf("Il programma migliore consiste di:\n");
+    for(i = 0; i < MAX_DIAG; i++){
+        printf("DIAGONALE %d:\n", i+1);
+        for(int j = 0 ; j < diag_vett[i].n_elem; j++){
+            printf("%s ", diag_vett[i].V_elem[j].name);
+        }
+    }
 
     free(mark);
     free(curr_prog);

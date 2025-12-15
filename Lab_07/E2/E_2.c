@@ -238,11 +238,15 @@ float calcSCORE(diag_t *program){
     int i, j;
     float total_score = 0;
     for(i = 0; i < MAX_DIAG; i++){
+        if (program[i].V_elem == NULL || program[i].n_elem == 0) {
+            continue; //salto diagonali non ancora assegnate
+        }
+
         float diag_score = 0;
         for(j = 0; j < program[i].n_elem; j++){
             diag_score += program[i].V_elem[j].score;
         }
-        if((i == 2) && (j == program[i].n_elem)){
+        if((i == 2) && (j == program[i].n_elem) && (j > 0)){
             if((program[i].V_elem[j-1].diff >= 8) && (program[i].V_elem[j-1].fin == 1)) diag_score = diag_score*1.5;
         }
         total_score += diag_score;

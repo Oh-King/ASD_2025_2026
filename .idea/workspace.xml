@@ -16,10 +16,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="77164d9d-02cc-4ad2-8318-1ca53fbc7f4e" name="Changes" comment="try debug">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab_07/E2/E_2.c" beforeDir="false" afterPath="$PROJECT_DIR$/Lab_07/E2/E_2.c" afterDir="false" />
-    </list>
+    <list default="true" id="77164d9d-02cc-4ad2-8318-1ca53fbc7f4e" name="Changes" comment="debugging" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -289,15 +286,7 @@
       <workItem from="1765644287885" duration="5076000" />
       <workItem from="1765711204091" duration="2005000" />
       <workItem from="1765747838078" duration="7786000" />
-      <workItem from="1765818633897" duration="5571000" />
-    </task>
-    <task id="LOCAL-00037" summary="todo: f isLESSorEQUAL">
-      <option name="closed" value="true" />
-      <created>1764151231449</created>
-      <option name="number" value="00037" />
-      <option name="presentableId" value="LOCAL-00037" />
-      <option name="project" value="LOCAL" />
-      <updated>1764151231449</updated>
+      <workItem from="1765818633897" duration="6008000" />
     </task>
     <task id="LOCAL-00038" summary="todo: f isLESSorEQUAL">
       <option name="closed" value="true" />
@@ -683,7 +672,15 @@
       <option name="project" value="LOCAL" />
       <updated>1765796080258</updated>
     </task>
-    <option name="localTasksCounter" value="86" />
+    <task id="LOCAL-00086" summary="debugging">
+      <option name="closed" value="true" />
+      <created>1765825356868</created>
+      <option name="number" value="00086" />
+      <option name="presentableId" value="LOCAL-00086" />
+      <option name="project" value="LOCAL" />
+      <updated>1765825356869</updated>
+    </task>
+    <option name="localTasksCounter" value="87" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -707,7 +704,6 @@
       <path value="$PROJECT_DIR$/Lab_03" />
       <path value="$PROJECT_DIR$/Lab_04" />
     </ignored-roots>
-    <MESSAGE value=".bin bon" />
     <MESSAGE value="bon bin" />
     <MESSAGE value="fun decl" />
     <MESSAGE value="func NEWnode" />
@@ -732,7 +728,8 @@
     <MESSAGE value="something with initialization needs fix" />
     <MESSAGE value="first compile" />
     <MESSAGE value="try debug" />
-    <option name="LAST_COMMIT_MESSAGE" value="try debug" />
+    <MESSAGE value="debugging" />
+    <option name="LAST_COMMIT_MESSAGE" value="debugging" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>

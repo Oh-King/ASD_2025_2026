@@ -145,8 +145,8 @@ int getDP() {
 
 void gen_prog(diag_t *diag_V, int size, diag_t *curr_prog, diag_t *best_prog,
               int *mark, int pos_diag, float *max_score, int DP, int DD) {
-    printf("entro in gen_prog per la volta n: %d, MAX SCORE = %f \n", PRINT_COUNTER, *max_score); //debug manuale
-    PRINT_COUNTER++;
+    //printf("entro in gen_prog per la volta n: %d, MAX SCORE = %f \n", PRINT_COUNTER, *max_score); //debug manuale
+    //PRINT_COUNTER++;
     //se ho già superato DP, non ha senso continuare
     if (pos_diag > 0) {
         int tot_diff = 0;
@@ -306,12 +306,12 @@ void WRAP_gen_prog(int N, int DP, int DD, diag_t *diag_vett){
 
     gen_prog(diag_vett, N, curr_prog, best_prog, mark, 0, &max_score, DP, DD);
 
-    printf("Il massimo punteggio corrisponde a:%f", max_score);
+    printf("Il massimo punteggio corrisponde a:%f\n", max_score);
     printf("Il programma migliore consiste di:\n");
     for(i = 0; i < MAX_DIAG; i++){
-        printf("DIAGONALE %d:\n", i+1);
+        printf("DIAGONALE %d:", i+1);
         for(int j = 0 ; j < diag_vett[i].n_elem; j++){
-            printf("%s ", diag_vett[i].V_elem[j].name);
+            printf("%s \n", diag_vett[i].V_elem[j].name);
         }
     }
 

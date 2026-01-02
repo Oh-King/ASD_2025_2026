@@ -24,3 +24,7 @@ void pg_print(FILE *fp, pg_t *pgp, invArray_t invArray) {
         pgp->code, pgp->classe, pgp->b_stat.hp, pgp->b_stat.mp, pgp->b_stat.atk,
         pgp->b_stat.def, pgp->b_stat.mag, pgp->b_stat.spr);
 }
+
+void pg_updateEquip(pg_t *pgp, invArray_t invArray) {
+
+}

@@ -26,5 +26,5 @@ void pg_print(FILE *fp, pg_t *pgp, invArray_t invArray) {
 }
 
 void pg_updateEquip(pg_t *pgp, invArray_t invArray) {
-
+    equipArray_update(equipArray_t equipArray, invArray_t invArray);
 }

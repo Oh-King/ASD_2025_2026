@@ -13,3 +13,7 @@ int pg_read(FILE *fp, pg_t *pgp) {
     pgp->equip = equipArray_init(); //da vedere
     return 0;
 }
+
+void pg_clean(pg_t *pgp) {
+    equipArray_free(pgp->equip);
+}

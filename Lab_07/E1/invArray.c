@@ -22,5 +22,7 @@ void invArray_read(FILE *fp, invArray_t invArray) {
     }
 }
 void invArray_print(FILE *fp, invArray_t invArray) {
-
+    fprintf(fp, "%s%s%d%d%d%d%d%d", invArray->inv_vett->nome, invArray->inv_vett->tipo,
+        invArray->inv_vett->stat.hp, invArray->inv_vett->stat.mp, invArray->inv_vett->stat.atk,
+        invArray->inv_vett->stat.def, invArray->inv_vett->stat.mag, invArray->inv_vett->stat.spr);
 }

@@ -22,7 +22,17 @@ void invArray_read(FILE *fp, invArray_t invArray) {
     }
 }
 void invArray_print(FILE *fp, invArray_t invArray) {
-    fprintf(fp, "%s%s%d%d%d%d%d%d", invArray->inv_vett->nome, invArray->inv_vett->tipo,
-        invArray->inv_vett->stat.hp, invArray->inv_vett->stat.mp, invArray->inv_vett->stat.atk,
-        invArray->inv_vett->stat.def, invArray->inv_vett->stat.mag, invArray->inv_vett->stat.spr);
+    for (int i = 0; i < invArray->n_elem; i++) {
+        fprintf(fp, "NOME: %s, TIPO: %s \n"
+                    "STATISTICHE: hp:%d mp:%d atk:%d def:%d mag:%d spr:%d", invArray->inv_vett[i].nome, invArray->inv_vett[i].tipo,
+        invArray->inv_vett[i].stat.hp, invArray->inv_vett[i].stat.mp, invArray->inv_vett[i].stat.atk,
+        invArray->inv_vett[i].stat.def, invArray->inv_vett[i].stat.mag, invArray->inv_vett[i].stat.spr);
+    }
+}
+void invArray_printByIndex(FILE *fp, invArray_t invArray, int index) {
+    fprintf(fp, "NOME: %s, TIPO: %s \n"
+        "STATISTICHE: hp:%d mp:%d atk:%d def:%d mag:%d spr:%d", invArray->inv_vett[index].nome,
+        invArray->inv_vett[index].tipo,invArray->inv_vett[index].stat.hp,
+        invArray->inv_vett[index].stat.mp, invArray->inv_vett[index].stat.atk,
+        invArray->inv_vett[index].stat.def, invArray->inv_vett[index].stat.mag, invArray->inv_vett[index].stat.spr);
 }

@@ -36,3 +36,7 @@ void invArray_printByIndex(FILE *fp, invArray_t invArray, int index) {
         invArray->inv_vett[index].stat.mp, invArray->inv_vett[index].stat.atk,
         invArray->inv_vett[index].stat.def, invArray->inv_vett[index].stat.mag, invArray->inv_vett[index].stat.spr);
 }
+inv_t* invArray_getByIndex(invArray_t invArray, int index) {
+    inv_t *ptr = &(invArray->inv_vett[index]);
+    return ptr;
+}

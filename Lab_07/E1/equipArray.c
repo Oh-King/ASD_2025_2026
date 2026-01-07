@@ -39,5 +39,18 @@ void equipArray_print(FILE *fp, equipArray_t equipArray, invArray_t invArray) {
 }
 
 void equipArray_update(equipArray_t equipArray, invArray_t invArray) {
-
+    eq_act choice;
+    char name[26];
+    int index;
+    printf("Vuoi aggiungere (0) o rimuovere (1) dall'inventario?\n");
+    scanf("%d", &choice);
+    if (choice == add) {
+        if (equipArray->inUse == 8) {
+            printf("Il personaggio ha già raggiunto il massimo di equipaggiamenti!\n");
+            return;
+        }
+        printf("Inserisci il nome dell'oggetto che vuoi aggiungere:\n");
+        scanf("%s", name);
+        index = invArray_searchByName(invArray, name);
+    }
 }

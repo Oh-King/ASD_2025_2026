@@ -30,7 +30,6 @@ int equipArray_inUse(equipArray_t equipArray) {
 
 void equipArray_print(FILE *fp, equipArray_t equipArray, invArray_t invArray) {
     int i;
-    fprintf(fp,"EQUIPAGGIAMENTI:\n");
     for (i = 0; i < EQUIP_SLOT; i++) {
         if (equipArray->equip[i] != -1) {
             invArray_printByIndex(fp, invArray, equipArray->equip[i]);
@@ -72,7 +71,8 @@ void equipArray_update(equipArray_t equipArray, invArray_t invArray) {
             equipArray->equip[index] = -1;
             equipArray->inUse--;
         } else {
-            printf("In quella posizione non c'è nessun equipaggiamento");
+            printf("In quella posizione non c'è nessun equipaggiamento\n");
+            return;
         }
     }
 }

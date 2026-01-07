@@ -26,11 +26,8 @@ void inv_read(FILE *fp, inv_t *invp) {
 }
 
 void inv_print(FILE *fp, inv_t *invp) {
-    fprintf(fp, "NOME: %s, TIPO: %s\n"
-                "STATISTICHE:"
-                "hp:%d, mp:%d, atk:%d, def:%d, mag:%d, spr:%d\n",
-                invp->nome, invp->tipo, invp->stat.hp, invp->stat.mp, invp->stat.atk, invp->stat.def,
-                invp->stat.mag, invp->stat.spr);
+    fprintf(fp, "NOME: %s, TIPO: %s\nSTATISTICHE:", invp->nome, invp->tipo);
+    stat_print(fp, &(invp->stat), -999);
 }
 
 stat_t inv_getStat(inv_t *invp) {

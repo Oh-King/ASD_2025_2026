@@ -17,6 +17,8 @@ typedef struct pg_s {
   equipArray_t equip;
 } pg_t;
 
+typedef pg_t *pg_link;
+
 /* lettura e scrittura su file */
 int pg_read(FILE *fp, pg_t *pgp);
 /* non essendo struct dinamica, pulisce chiamando il distruttore di equipArray */

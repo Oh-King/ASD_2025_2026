@@ -26,7 +26,7 @@ void pg_clean(pg_t *pgp) {
 
 void pg_print(FILE *fp, pg_t *pgp, invArray_t invArray) {
     fprintf(fp, "PERSONAGGIO %s:\n", pgp->nome);
-    fprintf(fp, " CODICE:%s, CLASSE:%s \nSTATISTICHE BASE: ",
+    fprintf(fp, " CODICE:%s, CLASSE:%s\nSTATISTICHE BASE: ",
         pgp->code, pgp->classe);
     stat_print(fp, &(pgp->b_stat), 1);
     fprintf(fp, "STATISTICHE EQUIPAGGIAMENTI: ");
@@ -39,7 +39,9 @@ void pg_print(FILE *fp, pg_t *pgp, invArray_t invArray) {
     fin_stat.def = pgp->b_stat.def + pgp->eq_stat.def;
     fin_stat.mag = pgp->b_stat.mag + pgp->eq_stat.mag;
     fin_stat.spr = pgp->b_stat.spr + pgp->eq_stat.spr;
-    stat_print(fp, &(fin_stat), 1);
+    stat_print(fp, &fin_stat, 1);
+    fprintf(fp, "EQUIPAGGIAMENTI IN USO:\n");
+    equipArray_print(fp, pgp->equip, invArray);
 }
 
 void pg_updateEquip(pg_t *pgp, invArray_t invArray) {

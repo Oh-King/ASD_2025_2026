@@ -19,6 +19,15 @@ void equipArray_free(equipArray_t equipArray) {
     free(equipArray);
 }
 
+int equipArray_inUse(equipArray_t equipArray) {
+    int cnt = 0;
+    int i;
+    for (i = 0; i < EQUIP_SLOT; i++) {
+        if (equipArray->equip[i] != -1) cnt++;  //ho supposto non fosse da fare banalmente return equipArray->inUse
+    }
+    return cnt;
+}
+
 void equipArray_update(equipArray_t equipArray, invArray_t invArray) {
 
 }

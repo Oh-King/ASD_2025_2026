@@ -9,6 +9,8 @@
 
 #include "invArray.h"
 
+typedef enum {add, rem} eq_act;
+
 /* ADT di prima classe collezione di oggetti di equipaggiamento */
 typedef struct equipArray_s *equipArray_t; 
 

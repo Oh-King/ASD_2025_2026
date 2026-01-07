@@ -59,6 +59,8 @@ void equipArray_update(equipArray_t equipArray, invArray_t invArray) {
             }
         }
     }else { //quindi si vuole rimuovere
+        printf("Attualmente hai equipaggiato i seguenti oggetti: ");
+        for (int i = 0; i < EQUIP_SLOT; i++) printf("%d ", equipArray->equip[i]);
         printf("Inserisci la posizione dell'equipaggiamento che vuoi rimuovere:\n");
         scanf("%d", &index);
         if (index < 0 || index > 7) {
@@ -70,6 +72,5 @@ void equipArray_update(equipArray_t equipArray, invArray_t invArray) {
         } else {
             printf("In quella posizione non c'è nessun equipaggiamento");
         }
-
     }
 }

@@ -28,6 +28,16 @@ int equipArray_inUse(equipArray_t equipArray) {
     return cnt;
 }
 
+void equipArray_print(FILE *fp, equipArray_t equipArray, invArray_t invArray) {
+    int i;
+    fprintf(fp,"EQUIPAGGIAMENTI:\n");
+    for (i = 0; i < EQUIP_SLOT; i++) {
+        if (equipArray->equip[i] != -1) {
+            invArray_printByIndex(fp, invArray, equipArray->equip[i]);
+        }
+    }
+}
+
 void equipArray_update(equipArray_t equipArray, invArray_t invArray) {
 
 }

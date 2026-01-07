@@ -55,6 +55,7 @@ void equipArray_update(equipArray_t equipArray, invArray_t invArray) {
         for (int i = 0; i < EQUIP_SLOT; i++) {
             if (equipArray->equip[i] == -1) {
                 equipArray->equip[i] = index;
+                equipArray->inUse++;
                 return;
             }
         }
@@ -69,8 +70,13 @@ void equipArray_update(equipArray_t equipArray, invArray_t invArray) {
         }
         if (equipArray->equip[index] != -1) {
             equipArray->equip[index] = -1;
+            equipArray->inUse--;
         } else {
             printf("In quella posizione non c'è nessun equipaggiamento");
         }
     }
+}
+
+int equipArray_getEquipByIndex(equipArray_t equipArray, int index) {
+    return equipArray->equip[index];
 }

@@ -24,9 +24,8 @@ void invArray_read(FILE *fp, invArray_t invArray) {
 void invArray_print(FILE *fp, invArray_t invArray) {
     for (int i = 0; i < invArray->n_elem; i++) {
         fprintf(fp, "%d) NOME: %s, TIPO: %s \n"
-                    "STATISTICHE: hp:%d mp:%d atk:%d def:%d mag:%d spr:%d",i , invArray->inv_vett[i].nome, invArray->inv_vett[i].tipo,
-        invArray->inv_vett[i].stat.hp, invArray->inv_vett[i].stat.mp, invArray->inv_vett[i].stat.atk,
-        invArray->inv_vett[i].stat.def, invArray->inv_vett[i].stat.mag, invArray->inv_vett[i].stat.spr);
+                    "STATISTICHE: ",i , invArray->inv_vett[i].nome, invArray->inv_vett[i].tipo);
+        stat_print(fp, &(invArray->inv_vett[i].stat), -999);
     }
 }
 void invArray_printByIndex(FILE *fp, invArray_t invArray, int index) {

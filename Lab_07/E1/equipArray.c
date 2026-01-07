@@ -52,5 +52,24 @@ void equipArray_update(equipArray_t equipArray, invArray_t invArray) {
         printf("Inserisci il nome dell'oggetto che vuoi aggiungere:\n");
         scanf("%s", name);
         index = invArray_searchByName(invArray, name);
+        for (int i = 0; i < EQUIP_SLOT; i++) {
+            if (equipArray->equip[i] == -1) {
+                equipArray->equip[i] = index;
+                return;
+            }
+        }
+    }else { //quindi si vuole rimuovere
+        printf("Inserisci la posizione dell'equipaggiamento che vuoi rimuovere:\n");
+        scanf("%d", &index);
+        if (index < 0 || index > 7) {
+            printf("Posizione non valida!");
+            return;
+        }
+        if (equipArray->equip[index] != -1) {
+            equipArray->equip[index] = -1;
+        } else {
+            printf("In quella posizione non c'è nessun equipaggiamento");
+        }
+
     }
 }

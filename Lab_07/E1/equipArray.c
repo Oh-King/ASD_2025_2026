@@ -15,6 +15,10 @@ equipArray_t equipArray_init() {
     return equipArray;
 }
 
+void equipArray_free(equipArray_t equipArray) {
+    free(equipArray);
+}
+
 void equipArray_update(equipArray_t equipArray, invArray_t invArray) {
 
 }

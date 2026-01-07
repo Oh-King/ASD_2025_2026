@@ -21,14 +21,25 @@ int pg_read(FILE *fp, pg_t *pgp) {
 
 void pg_clean(pg_t *pgp) {
     equipArray_free(pgp->equip);
+    pgp->equip = NULL;
 }
 
 void pg_print(FILE *fp, pg_t *pgp, invArray_t invArray) {
     fprintf(fp, "PERSONAGGIO %s:\n", pgp->nome);
-    fprintf(fp, " CODICE:%s\nCLASSE:%s\nSTATISTICHE BASE: hp:%d mp:%d atk:%d def:%d mag:%d spr:%d \n",
-        pgp->code, pgp->classe, pgp->b_stat.hp, pgp->b_stat.mp, pgp->b_stat.atk,
-        pgp->b_stat.def, pgp->b_stat.mag, pgp->b_stat.spr);
-    fprintf(fp, "");
+    fprintf(fp, " CODICE:%s, CLASSE:%s \nSTATISTICHE BASE: ",
+        pgp->code, pgp->classe);
+    stat_print(fp, &(pgp->b_stat), 1);
+    fprintf(fp, "STATISTICHE EQUIPAGGIAMENTI: ");
+    stat_print(fp, &(pgp->eq_stat), -999); //cerco di non dare limiti a soglia per equipaggiamenti, possono dare malus
+    fprintf(fp, "STATISTICHE FINALI: ");
+    stat_t fin_stat;
+    fin_stat.hp = pgp->b_stat.hp + pgp->eq_stat.hp;
+    fin_stat.mp = pgp->b_stat.mp + pgp->eq_stat.mp;
+    fin_stat.atk = pgp->b_stat.atk + pgp->eq_stat.atk;
+    fin_stat.def = pgp->b_stat.def + pgp->eq_stat.def;
+    fin_stat.mag = pgp->b_stat.mag + pgp->eq_stat.mag;
+    fin_stat.spr = pgp->b_stat.spr + pgp->eq_stat.spr;
+    stat_print(fp, &(fin_stat), 1);
 }
 
 void pg_updateEquip(pg_t *pgp, invArray_t invArray) {

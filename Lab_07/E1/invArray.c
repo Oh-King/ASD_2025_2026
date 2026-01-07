@@ -31,7 +31,7 @@ void invArray_print(FILE *fp, invArray_t invArray) {
 }
 void invArray_printByIndex(FILE *fp, invArray_t invArray, int index) {
     fprintf(fp, "NOME: %s, TIPO: %s \n"
-        "STATISTICHE: hp:%d mp:%d atk:%d def:%d mag:%d spr:%d", invArray->inv_vett[index].nome,
+        "STATISTICHE: hp:%d mp:%d atk:%d def:%d mag:%d spr:%d\n", invArray->inv_vett[index].nome,
         invArray->inv_vett[index].tipo,invArray->inv_vett[index].stat.hp,
         invArray->inv_vett[index].stat.mp, invArray->inv_vett[index].stat.atk,
         invArray->inv_vett[index].stat.def, invArray->inv_vett[index].stat.mag, invArray->inv_vett[index].stat.spr);

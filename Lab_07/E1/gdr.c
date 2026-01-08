@@ -22,7 +22,7 @@ void stampaMenu(char *scelte[], int *selezione) {
 }
 
 int main(int argc, char **argv) {
-    printf("Programma avviato\n");
+    printf("FASE 0: Programma avviato\n");
     fflush(stdout);
     char *scelte[] = {
         "Uscita",
@@ -39,36 +39,50 @@ int main(int argc, char **argv) {
     FILE *fin;
     bool fineProgramma;
 
+    printf("FASE 1: alloco le varie strutture\n");
+    fflush(stdout);
     pgList_t pgList = pgList_init(); //aggiungo nodo sentinella
     invArray_t invArray = invArray_init();
     pg_t *pgp, pg;
 
+    printf("FASE 2: apro pg.txt\n");
+    fflush(stdout);
     fin = fopen("pg.txt", "r");
     if (fin == NULL) {
         printf("ERRORE NELL'APERTURA DEL FILE pg.txt\n");
         return -1;
     }
+    printf("FASE 3: chiamo pgList_read e chiudo file\n");
+    fflush(stdout);
     pgList_read(fin, pgList);
     fclose(fin);
 #if DBG
     pgList_print(stdout, pgList);
 #endif /* DBG */
-
+    printf("FASE 4: apro inventario.txt");
+    fflush(stdout);
     fin = fopen("inventario.txt", "r");
     if (fin == NULL) {
         printf("ERRORE NELL'APERTURA DEL FILE inventario.txt\n");
         return -1;
     }
+    printf("FASE 5: chiamo invArray_read e chiudo file\n");
+    fflush(stdout);
     invArray_read(fin, invArray);
     fclose(fin);
 #if DBG
     invArray_print(stdout, invArray);
 #endif /* DBG */
-
+    printf("FASE 6: entro loop Menu\n");
+    fflush(stdout);
     fineProgramma = falso;
 
     do {
+        printf("FASE 7: stampo Menu\n");
+        fflush(stdout);
         stampaMenu(scelte, &selezione);
+        printf("FASE 8: ho stampato il menu. Ho selezionato: %d\n", selezione);
+        fflush(stdout);
         switch (selezione) {
             case 0: {
                 fineProgramma = vero;
@@ -127,6 +141,8 @@ int main(int argc, char **argv) {
         }
     } while (!fineProgramma);
 
+    printf("FASE 9: sono prima di pgList_free e invArray_free\n");
+    fflush(stdout);
     pgList_free(pgList);
     invArray_free(invArray); //libero anche inventario
     return 0;

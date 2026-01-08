@@ -2,11 +2,13 @@
 #include "inv.h"
 #include "invArray.h"
 
+/*
 int pg_read(FILE *fp, pg_t *pgp) {
     if (fscanf(fp, "%s %s %s ",
                pgp->code, pgp->nome, pgp->classe) != 3) {
         return -1;
     }
+
     stat_read(fp, &(pgp->b_stat));
     pgp->equip = equipArray_init();
     //devo inizializzare a zero tutte le statistiche dell'equipaggiamento
@@ -18,6 +20,23 @@ int pg_read(FILE *fp, pg_t *pgp) {
     pgp->eq_stat.spr = 0;
     return 0;
 }
+*/
+
+int pg_read(FILE *fp, pg_t *pgp) {
+    if (fscanf(fp, "%s %s %s", pgp->code, pgp->nome, pgp->classe) != 3)
+        return -1;
+
+    if (fscanf(fp, "%d %d %d %d %d %d",
+               &pgp->b_stat.hp, &pgp->b_stat.mp, &pgp->b_stat.atk,
+               &pgp->b_stat.def, &pgp->b_stat.mag, &pgp->b_stat.spr) != 6)
+        return -1;
+
+    pgp->equip = equipArray_init();
+    memset(&pgp->eq_stat, 0, sizeof(stat_t));
+
+    return 0;
+}
+
 
 void pg_clean(pg_t *pgp) {
     equipArray_free(pgp->equip);

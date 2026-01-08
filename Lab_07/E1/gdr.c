@@ -59,7 +59,7 @@ int main(int argc, char **argv) {
 #if DBG
     pgList_print(stdout, pgList);
 #endif /* DBG */
-    printf("FASE 4: apro inventario.txt");
+    printf("FASE 4: apro inventario.txt\n");
     fflush(stdout);
     fin = fopen("inventario.txt", "r");
     if (fin == NULL) {

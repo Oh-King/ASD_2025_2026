@@ -25,8 +25,10 @@ void pgList_free(pgList_t pgList) {
 
 void pgList_read(FILE *fp, pgList_t pgList) {
      pg_t pg;
-     while (pg_read(fp, &pg) != EOF) {
+     pg.equip = NULL;
+     while (pg_read(fp, &pg) == 0) {
           pgList_insert(pgList, pg);
+          pg.equip = NULL;
      }
 }
 

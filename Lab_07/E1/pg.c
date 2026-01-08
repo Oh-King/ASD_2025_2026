@@ -46,4 +46,21 @@ void pg_print(FILE *fp, pg_t *pgp, invArray_t invArray) {
 
 void pg_updateEquip(pg_t *pgp, invArray_t invArray) {
     equipArray_update(pgp->equip, invArray);
+    //aggiorno stats
+    pgp->eq_stat.hp = pgp->eq_stat.mp = 0;
+    pgp->eq_stat.atk = pgp->eq_stat.def = 0;
+    pgp->eq_stat.mag = pgp->eq_stat.spr = 0;
+    for (int i = 0; i < EQUIP_SLOT; i++) {
+        int index = equipArray_getEquipByIndex(pgp->equip, i);
+        if (index != -1) {
+            inv_t *item = invArray_getByIndex(invArray, index);
+            stat_t s = inv_getStat(item);
+            pgp->eq_stat.hp += s.hp;
+            pgp->eq_stat.mp += s.mp;
+            pgp->eq_stat.atk += s.atk;
+            pgp->eq_stat.def += s.def;
+            pgp->eq_stat.mag += s.mag;
+            pgp->eq_stat.spr += s.spr;
+        }
+    }
 }

@@ -51,6 +51,10 @@ void equipArray_update(equipArray_t equipArray, invArray_t invArray) {
         printf("Inserisci il nome dell'oggetto che vuoi aggiungere:\n");
         scanf("%s", name);
         index = invArray_searchByName(invArray, name);
+        if (index == -1) {
+            printf("Oggetto non trovato nell'inventario.\n");
+            return;
+        }
         for (int i = 0; i < EQUIP_SLOT; i++) {
             if (equipArray->equip[i] == -1) {
                 equipArray->equip[i] = index;

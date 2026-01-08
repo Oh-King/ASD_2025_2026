@@ -15,6 +15,7 @@ void pgList_free(pgList_t pgList) {
      pgList_t temp;
      while (pgList != NULL) {
           temp = pgList->next;
+          pg_clean(&pgList->pgNode);
           free(pgList);
           pgList = temp;
      }
@@ -28,20 +29,28 @@ void pgList_read(FILE *fp, pgList_t pgList) {
 }
 
 void pgList_print(FILE *fp, pgList_t pgList, invArray_t invArray) {
-     if (pgList == NULL) {
+     pgList_t head = pgList->next;
+     if (head == NULL) {
           fprintf(fp,"Lista personaggi vuota\n");
           return;
      }
-     while (pgList != NULL) {
-          pg_print(fp, &(pgList->pgNode), invArray);
+     while (head != NULL) {
+          pg_print(fp, &(head->pgNode), invArray);
           fprintf(fp, "\n");
-          pgList = pgList->next;
+          head = head->next;
      }
 }
 
-void pgList_insert(pgList_t pgList, pg_t pg) { //suppongo il parametro formale pgList sia la coda della lista
-     pgList->next = malloc(sizeof(struct pgList_s));
-     pgList->next->pgNode = pg; //non serve copia profonda
+void pgList_insert(pgList_t pgList, pg_t pg) { //suppongo il parametro formale pgList sia la testa della lista
+     pgList_t newNode = malloc(sizeof(struct pgList_s));
+     if (newNode == NULL) {
+          printf("Errore allocazione nodo personaggio\n");
+          exit(1);
+     }
+     newNode->pgNode = pg;  //non serve copia profonda
+     // inserimento in testa dopo il sentinella
+     newNode->next = pgList->next;
+     pgList->next = newNode;
 }
 
 void pgList_remove(pgList_t pgList, char* cod) {
@@ -53,6 +62,7 @@ void pgList_remove(pgList_t pgList, char* cod) {
      for (curr = pgList, pred = curr; curr !=  NULL; pred = curr, curr = curr->next) {
           if (strcmp(curr->pgNode.code, cod) == 0) {
                pred->next = curr->next;
+               pg_clean(&(curr->pgNode)); //libero equip
                free(curr);
                return;
           }

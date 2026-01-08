@@ -41,7 +41,7 @@ inv_t* invArray_getByIndex(invArray_t invArray, int index) {
 int invArray_searchByName(invArray_t invArray, char *name) {
     int i;
     for (i = 0; i < invArray->n_elem; i++) {
-        if (strcmp(invArray->inv_vett->nome, name) == 0) return i;
+        if (strcmp(invArray->inv_vett[i].nome, name) == 0) return i;
     }
     return -1;
 }

@@ -87,9 +87,9 @@ int main(int argc, char **argv) {
 
             case 4: {
                 printf("Cod Nome Classe HP MP ATK DEF MAG SPR: ");
-                if (pg_read(stdin, &pg) != 0) {
+                if (pg_read(stdin, &pg) == 0) {
                     pgList_insert(pgList, pg);
-                }
+                }else printf("Errore lettura personaggio\n");
             }
             break;
 

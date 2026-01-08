@@ -21,22 +21,22 @@ void pgList_free(pgList_t pgList) {
 }
 
 void pgList_read(FILE *fp, pgList_t pgList) {
-     fp = fopen("pg.txt", "r");
-     pgList_t temp = pgList;
-     while (pgList != NULL) {
-          pg_read(fp, &(pgList->pgNode));
-          pgList->next = pgList_init();
-          if (pg_read(fp, &(pgList->next->pgNode)) == 0)
-          pgList = pgList->next;
-          else {
-               printf("Problemi nella lettura personaggi\n");
-               exit(1);
-          }
+     pg_t pg;
+     while (pg_read(fp, &pg) != EOF) {
+          pgList_insert(pgList, pg);
      }
 }
 
 void pgList_print(FILE *fp, pgList_t pgList, invArray_t invArray) {
-
+     if (pgList == NULL) {
+          fprintf(fp,"Lista personaggi vuota\n");
+          return;
+     }
+     while (pgList != NULL) {
+          pg_print(fp, &(pgList->pgNode), invArray);
+          fprintf(fp, "\n");
+          pgList = pgList->next;
+     }
 }
 
 void pgList_insert(pgList_t pgList, pg_t pg) { //suppongo il parametro formale pgList sia la coda della lista

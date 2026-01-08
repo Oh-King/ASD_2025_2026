@@ -40,5 +40,33 @@ void pgList_print(FILE *fp, pgList_t pgList, invArray_t invArray) {
 }
 
 void pgList_insert(pgList_t pgList, pg_t pg) { //suppongo il parametro formale pgList sia la coda della lista
+     pgList->next = malloc(sizeof(struct pgList_s));
+     pgList->next->pgNode = pg; //non serve copia profonda
+}
 
+void pgList_remove(pgList_t pgList, char* cod) {
+     pgList_t pred, curr;
+     if (pgList == NULL) {
+          printf("Lista personaggi vuota\n");
+          return;
+     }
+     for (curr = pgList, pred = curr; curr !=  NULL; pred = curr, curr = curr->next) {
+          if (strcmp(curr->pgNode.code, cod) == 0) {
+               pred->next = curr->next;
+               free(curr);
+               return;
+          }
+     }
+     printf("Non è stato trovato un personaggio con quel codice\n");
+}
+
+pg_t *pgList_searchByCode(pgList_t pgList, char* cod) {
+     pg_link ptr = NULL;
+     pgList_t node;
+     for (node = pgList; node != NULL; node = node-> next) {
+          if (strcmp(node->pgNode.code, cod) == 0)
+               return ptr = &(node->pgNode);
+     }
+     printf("Non e stato trovato un personaggio con quel codice\n");
+     return NULL;
 }

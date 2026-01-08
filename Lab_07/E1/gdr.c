@@ -17,10 +17,13 @@ void stampaMenu(char *scelte[], int *selezione) {
     printf("\nMENU'\n");
     for (i = 0; i < N_SCELTE; i++)
         printf("%2d > %s\n", i, scelte[i]);
+    fflush(stdout);
     scanf(" %d", selezione);
 }
 
 int main(int argc, char **argv) {
+    printf("Programma avviato\n");
+    fflush(stdout);
     char *scelte[] = {
         "Uscita",
         "Stampa personaggi",

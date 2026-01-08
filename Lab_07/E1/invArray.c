@@ -16,7 +16,15 @@ void invArray_free(invArray_t invArray) {
     free(invArray);
 }
 void invArray_read(FILE *fp, invArray_t invArray) {
-    fscanf(fp, "%d", &(invArray->n_elem));
+    if (fscanf(fp, "%d", &(invArray->n_elem)) != 1) {
+        printf("Errore lettura n° oggetti inventario\n");
+        exit(1);
+    }
+    invArray->inv_vett = malloc(invArray->n_elem * sizeof(inv_t));
+    if (invArray->inv_vett == NULL) {
+        printf("Errore allocazione vettore inventario\n");
+        exit(1);
+    }
     for (int i = 0; i < invArray->n_elem; i++) {
         inv_read(fp, &(invArray->inv_vett[i]));
     }

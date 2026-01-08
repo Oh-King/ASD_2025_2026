@@ -10,7 +10,6 @@
 #define DBG 0
 
 enum { falso, vero };
-
 typedef int bool;
 
 void stampaMenu(char *scelte[], int *selezione) {
@@ -37,11 +36,15 @@ int main(int argc, char **argv) {
     FILE *fin;
     bool fineProgramma;
 
-    pgList_t pgList = pgList_init();
+    pgList_t pgList = pgList_init(); //aggiungo nodo sentinella
     invArray_t invArray = invArray_init();
     pg_t *pgp, pg;
 
     fin = fopen("pg.txt", "r");
+    if (fin == NULL) {
+        printf("ERRORE NELL'APERTURA DEL FILE pg.txt\n");
+        return -1;
+    }
     pgList_read(fin, pgList);
     fclose(fin);
 #if DBG
@@ -49,6 +52,10 @@ int main(int argc, char **argv) {
 #endif /* DBG */
 
     fin = fopen("inventario.txt", "r");
+    if (fin == NULL) {
+        printf("ERRORE NELL'APERTURA DEL FILE inventario.txt\n");
+        return -1;
+    }
     invArray_read(fin, invArray);
     fclose(fin);
 #if DBG
@@ -118,5 +125,6 @@ int main(int argc, char **argv) {
     } while (!fineProgramma);
 
     pgList_free(pgList);
+    invArray_free(invArray); //libero anche inventario
     return 0;
 }

@@ -12,13 +12,15 @@ pgList_t pgList_init() {
 }
 
 void pgList_free(pgList_t pgList) {
+     pgList_t curr = pgList->next;
      pgList_t temp;
-     while (pgList != NULL) {
-          temp = pgList->next;
-          pg_clean(&pgList->pgNode);
-          free(pgList);
-          pgList = temp;
+     while (curr != NULL) {
+          temp = curr->next;
+          pg_clean(&(curr->pgNode));
+          free(curr);
+          curr = temp;
      }
+     free(pgList); //non libero l'equip perché non l'ho assegnato ed evito comportamento strnao
 }
 
 void pgList_read(FILE *fp, pgList_t pgList) {

@@ -73,6 +73,8 @@ int main(int argc, char **argv) {
 #if DBG
     invArray_print(stdout, invArray);
 #endif /* DBG */
+
+
     printf("FASE 6: entro loop Menu\n");
     fflush(stdout);
     fineProgramma = falso;

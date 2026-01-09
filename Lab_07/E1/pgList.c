@@ -25,10 +25,8 @@ void pgList_free(pgList_t pgList) {
 
 void pgList_read(FILE *fp, pgList_t pgList) {
      pg_t pg;
-     pg.equip = NULL;
      while (pg_read(fp, &pg) == 0) {
           pgList_insert(pgList, pg);
-          pg.equip = NULL;
      }
 }
 
@@ -45,15 +43,14 @@ void pgList_print(FILE *fp, pgList_t pgList, invArray_t invArray) {
      }
 }
 
-void pgList_insert(pgList_t pgList, pg_t pg) { //suppongo il parametro formale pgList sia la testa della lista
+void pgList_insert(pgList_t pgList, pg_t pg) {
      pgList_t newNode = malloc(sizeof(struct pgList_s));
      if (newNode == NULL) {
           printf("Errore allocazione nodo personaggio\n");
           exit(1);
      }
-     newNode->pgNode = pg;  //non serve copia profonda
-     // inserimento in testa dopo il sentinella
-     newNode->next = pgList->next;
+     newNode->pgNode = pg;        // copio il personaggio
+     newNode->next = pgList->next; // inserisco in testa
      pgList->next = newNode;
 }
 

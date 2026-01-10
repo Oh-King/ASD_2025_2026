@@ -137,3 +137,27 @@ int GRAPHcheck3_L(Graph G, int a, int b, int c) {
         if (t->V == c) bc = 1;
     return ab && ac && bc;
 }
+
+void GRAPHfree(Graph G) {
+    int V = STcount(G->tab);
+    //libero matrice
+    for (int i = 0; i < V; i++)
+        free(G->m_ADJ[i]);
+    free(G->m_ADJ);
+    //libero lista
+    if (G->l_ADJ != NULL) {
+        for (int i = 0; i < V; i++) {
+            link t = G->l_ADJ[i];
+            while (t != NULL) {
+                link next = t->next;
+                free(t);
+                t = next;
+            }
+        }
+        free(G->l_ADJ);
+    }
+    //libero tabella simboli
+    STfree(G->tab);
+    // libera grafo
+    free(G);
+}

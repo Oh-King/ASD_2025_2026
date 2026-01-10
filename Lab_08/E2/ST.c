@@ -51,3 +51,9 @@ int STsearch(ST tab, char *name) { //poiché vettore ordinato ->ricerca dicotomi
 char *STsearchByIndex(ST tab, int index) {
     return tab->names[index];
 }
+void STfree(ST tab) {
+    for (int i = 0; i < tab->n_elem; i++)
+        free(tab->names[i]);
+    free(tab->names);
+    free(tab);
+}

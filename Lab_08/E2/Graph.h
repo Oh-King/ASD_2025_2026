@@ -24,5 +24,7 @@ void GRAPHlistFree(Graph G);
 void GRAPHlistCreate(Graph G);
 int GRAPHcheck3_M(Graph G, int a, int b, int c);
 int GRAPHcheck3_L(Graph G, int id1, int id2, int id3);
+void GRAPHfree(Graph G);
+
 
 #endif //LABORATORI_GRAPH_H

@@ -71,7 +71,7 @@ void GRAPHstore(Graph G, FILE *fout) { //matrice adiacenze è simmetrica
     int dim = STcount(G->tab);
     for (i = 0; i < dim; i++) {
         char *v_name = STsearchByIndex(G->tab, i);
-        fprintf(fout, "Il vertice in questione: %s\n I suoi vicini sono: ", v_name);
+        fprintf(fout, "Il vertice in questione: %s\nI suoi vicini sono: ", v_name);
         int n_adj = 0;
         char **adj = malloc(dim * sizeof(char*));
         for (j = 0; j < dim; j++) {

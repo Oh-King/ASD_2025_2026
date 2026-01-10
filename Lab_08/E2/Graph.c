@@ -82,3 +82,7 @@ void GRAPHstore(Graph G, FILE *fout) { //matrice adiacenze è simmetrica
         free(adj);
     }
 }
+
+int GRAPHgetIndex(Graph G, char *name) {
+    return STsearch(G->tab, name);
+}

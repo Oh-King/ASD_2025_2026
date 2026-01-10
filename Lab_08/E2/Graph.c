@@ -161,3 +161,8 @@ void GRAPHfree(Graph G) {
     // libera grafo
     free(G);
 }
+
+int GRAPHhasList(Graph G) {
+    return G->l_ADJ != NULL;
+}
+

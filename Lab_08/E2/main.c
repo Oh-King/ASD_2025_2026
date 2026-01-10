@@ -59,13 +59,14 @@ int main(int argc, char **argv) {
                         printf("Non formano un sottografo completo\n");
                 }
                 else if (metodo == 2) {
-                    if (G->l_ADJ == NULL) {
+                    if (!GRAPHhasList(G)) {
                         printf("Lista non generata. Generarla prima (opzione 3)\n");
                     } else if (GRAPHcheck3_L(G, id1, id2, id3))
                         printf("Formano un sottografo completo\n");
                     else
                         printf("Non formano un sottografo completo\n");
                 }
+
                 break;
             }
             case 3: {

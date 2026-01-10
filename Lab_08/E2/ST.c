@@ -30,3 +30,24 @@ void STinsert(ST tab, char *name) { //inserisco ordinato -> non mi serve indice 
     mettere name nella posizione successiva a i*/
 
 }
+
+int STcount(ST tab) {
+    return tab->n_elem;
+}
+
+int STsearch(ST tab, char *name) { //poiché vettore ordinato ->ricerca dicotomica
+    int l = 0, r = tab->n_elem-1;
+    while ( r >= l) {
+        int mid = (l+r)/2;
+        int confronto = strcmp(name, tab->names[mid]);
+        if (confronto == 0) return mid;
+        if (confronto > 0) {
+            l = mid+1;
+        }else r = mid-1;
+    }
+    return -1; //non ho trovato indice in tabella di simboli
+}
+
+char *STsearchByIndex(ST tab, int index) {
+    return tab->names[index];
+}

@@ -11,8 +11,9 @@ typedef struct {
     int u, v, flusso;
 }edge_t;
 
-Graph GRAPHinit(int V);
-void GRAPHload(FILE *fin, Graph G);
+Graph GRAPHinit(int V); //ok
+void GRAPHload(FILE *fin, Graph G); //ok
+int strcmp_wrap(const void *a, const void *b);
 void GRAPHstore(Graph G, FILE *fout);
 int GRAPHgetIndex(Graph G, char *name);
 void GRAPHinsertE(Graph G, int id1, int id2, int wt);

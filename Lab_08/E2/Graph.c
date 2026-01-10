@@ -3,14 +3,18 @@
 
 struct node {
     int V;
-    int wt;
+    int wt; //sarebbe il flusso
     link next;
 };
 
 struct graph {
     int V, E;
     int **m_ADJ;
-    link l_ADJ;
+    link *l_ADJ;
     ST tab;
 };
+
+int GRAPHload(FILE *fin) {
+
+}
 

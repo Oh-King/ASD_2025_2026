@@ -17,13 +17,13 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="77164d9d-02cc-4ad2-8318-1ca53fbc7f4e" name="Changes" comment="FINAL. PROBLEM WAS IN &quot;inventario.txt&quot;">
-      <change afterPath="$PROJECT_DIR$/Lab_08/E2/Graph.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Lab_08/E2/Graph.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Lab_08/E2/ST.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Lab_08/E2/ST.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Lab_08/E2/main.c" afterDir="false" />
+    <list default="true" id="77164d9d-02cc-4ad2-8318-1ca53fbc7f4e" name="Changes" comment="new exercise">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab_08/E2/Graph.c" beforeDir="false" afterPath="$PROJECT_DIR$/Lab_08/E2/Graph.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab_08/E2/Graph.h" beforeDir="false" afterPath="$PROJECT_DIR$/Lab_08/E2/Graph.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab_08/E2/ST.c" beforeDir="false" afterPath="$PROJECT_DIR$/Lab_08/E2/ST.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab_08/E2/ST.h" beforeDir="false" afterPath="$PROJECT_DIR$/Lab_08/E2/ST.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab_08/E2/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/Lab_08/E2/main.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -206,7 +206,7 @@
     "C/C++ File.E_4.c.executor": "Run",
     "C/C++ File.gdr.c.executor": "Run",
     "C/C++ File.main.c (1).executor": "Run",
-    "C/C++ File.main.c.executor": "Debug",
+    "C/C++ File.main.c.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.RadMigrateCodeStyle": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -228,27 +228,9 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="C/C++ File.main.c (1)">
-    <configuration name="E_2.c" type="CppFileRunConfiguration" factoryName="CppFileRunConfiguration" temporary="true" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Laboratori" TARGET_NAME="E_2.c" CONFIG_NAME="E_2.c">
-      <option name="sourceFile" value="Lab_07\E2\E_2.c" />
-      <method v="2">
-        <option name="com.jetbrains.cidr.cpp.runfile.CppFileBuildBeforeRunTaskProvider$BasicBuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="gdr.c" type="CppFileRunConfiguration" factoryName="CppFileRunConfiguration" temporary="true" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Laboratori" TARGET_NAME="gdr.c" CONFIG_NAME="gdr.c">
-      <option name="sourceFile" value="Lab_07\E1\gdr.c" />
-      <method v="2">
-        <option name="com.jetbrains.cidr.cpp.runfile.CppFileBuildBeforeRunTaskProvider$BasicBuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager">
     <configuration name="main.c (1)" type="CppFileRunConfiguration" factoryName="CppFileRunConfiguration" temporary="true" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Laboratori" TARGET_NAME="main.c" CONFIG_NAME="main.c">
       <option name="sourceFile" value="Lab_08\E2\main.c" />
-      <method v="2">
-        <option name="com.jetbrains.cidr.cpp.runfile.CppFileBuildBeforeRunTaskProvider$BasicBuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="main.c" type="CppFileRunConfiguration" factoryName="CppFileRunConfiguration" temporary="true" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Laboratori" TARGET_NAME="main.c" CONFIG_NAME="main.c">
-      <option name="sourceFile" value="Lab_06\E3\main.c" />
       <method v="2">
         <option name="com.jetbrains.cidr.cpp.runfile.CppFileBuildBeforeRunTaskProvider$BasicBuildBeforeRunTask" enabled="true" />
       </method>
@@ -256,9 +238,6 @@
     <recent_temporary>
       <list>
         <item itemvalue="C/C++ File.main.c (1)" />
-        <item itemvalue="C/C++ File.gdr.c" />
-        <item itemvalue="C/C++ File.E_2.c" />
-        <item itemvalue="C/C++ File.main.c" />
       </list>
     </recent_temporary>
   </component>
@@ -322,23 +301,7 @@
       <workItem from="1767369134960" duration="8362000" />
       <workItem from="1767536881345" duration="37408000" />
       <workItem from="1767866475681" duration="20725000" />
-      <workItem from="1767971292264" duration="9694000" />
-    </task>
-    <task id="LOCAL-00084" summary="first compile">
-      <option name="closed" value="true" />
-      <created>1765789522812</created>
-      <option name="number" value="00084" />
-      <option name="presentableId" value="LOCAL-00084" />
-      <option name="project" value="LOCAL" />
-      <updated>1765789522812</updated>
-    </task>
-    <task id="LOCAL-00085" summary="try debug">
-      <option name="closed" value="true" />
-      <created>1765796080258</created>
-      <option name="number" value="00085" />
-      <option name="presentableId" value="LOCAL-00085" />
-      <option name="project" value="LOCAL" />
-      <updated>1765796080258</updated>
+      <workItem from="1767971292264" duration="20206000" />
     </task>
     <task id="LOCAL-00086" summary="debugging">
       <option name="closed" value="true" />
@@ -716,7 +679,23 @@
       <option name="project" value="LOCAL" />
       <updated>1767919139174</updated>
     </task>
-    <option name="localTasksCounter" value="133" />
+    <task id="LOCAL-00133" summary="new exercise">
+      <option name="closed" value="true" />
+      <created>1767999879478</created>
+      <option name="number" value="00133" />
+      <option name="presentableId" value="LOCAL-00133" />
+      <option name="project" value="LOCAL" />
+      <updated>1767999879485</updated>
+    </task>
+    <task id="LOCAL-00134" summary="new exercise">
+      <option name="closed" value="true" />
+      <created>1768002295035</created>
+      <option name="number" value="00134" />
+      <option name="presentableId" value="LOCAL-00134" />
+      <option name="project" value="LOCAL" />
+      <updated>1768002295035</updated>
+    </task>
+    <option name="localTasksCounter" value="135" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -740,7 +719,6 @@
       <path value="$PROJECT_DIR$/Lab_03" />
       <path value="$PROJECT_DIR$/Lab_04" />
     </ignored-roots>
-    <MESSAGE value="func syntax" />
     <MESSAGE value="read n print" />
     <MESSAGE value="invArray_init" />
     <MESSAGE value="invArray  free, read n print" />
@@ -765,7 +743,8 @@
     <MESSAGE value="malloc in invArray" />
     <MESSAGE value="debug" />
     <MESSAGE value="FINAL. PROBLEM WAS IN &quot;inventario.txt&quot;" />
-    <option name="LAST_COMMIT_MESSAGE" value="FINAL. PROBLEM WAS IN &quot;inventario.txt&quot;" />
+    <MESSAGE value="new exercise" />
+    <option name="LAST_COMMIT_MESSAGE" value="new exercise" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>

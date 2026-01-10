@@ -28,7 +28,7 @@ void STinsert(ST tab, char *name) { //inserisco ordinato -> non mi serve indice 
     }
     tab->names[i+1] = strdup(name); /* sono fuori while quindi o i < 0 oppure strcmp ritorna >=0, quindi devo
     mettere name nella posizione successiva a i*/
-
+    tab->n_elem++;
 }
 
 int STcount(ST tab) {

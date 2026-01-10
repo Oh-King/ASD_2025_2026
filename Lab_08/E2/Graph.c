@@ -93,3 +93,48 @@ void GRAPHstore(Graph G, FILE *fout) { //matrice adiacenze è simmetrica
 int GRAPHgetIndex(Graph G, char *name) {
     return STsearch(G->tab, name);
 }
+
+void GRAPHlistFree(Graph G) {
+    if (G->l_ADJ == NULL)
+        return;
+    int V = STcount(G->tab);
+    for (int i = 0; i < V; i++) {
+        link t = G->l_ADJ[i];
+        while (t != NULL) {
+            link next = t->next;
+            free(t);
+            t = next;
+        }
+    }
+    free(G->l_ADJ);
+    G->l_ADJ = NULL;
+}
+void GRAPHlistCreate(Graph G) {
+    int V = STcount(G->tab);
+    //rpima libero
+    GRAPHlistFree(G);
+    //poi alloco
+    G->l_ADJ = malloc(V * sizeof(link));
+    for (int i = 0; i < V; i++) G->l_ADJ[i] = NULL;
+    for (int i = 0; i < V; i++) {
+        for (int j = 0; j < V; j++) {
+            if (G->m_ADJ[i][j] != 0)
+                G->l_ADJ[i] = NEWnode(j, G->m_ADJ[i][j], G->l_ADJ[i]);
+        }
+    }
+}
+
+int GRAPHcomplete3_m(Graph G, int a, int b, int c) {
+    return G->m_ADJ[a][b] && G->m_ADJ[a][c] && G->m_ADJ[b][c];
+}
+
+int GRAPHcomplete3_l(Graph G, int a, int b, int c) {
+    int ab = 0, ac = 0, bc = 0;
+    for (link t = G->l_ADJ[a]; t != NULL; t = t->next)
+        if (t->V == b) ab = 1;
+    for (link t = G->l_ADJ[a]; t != NULL; t = t->next)
+        if (t->V == c) ac = 1;
+    for (link t = G->l_ADJ[b]; t != NULL; t = t->next)
+        if (t->V == c) bc = 1;
+    return ab && ac && bc;
+}

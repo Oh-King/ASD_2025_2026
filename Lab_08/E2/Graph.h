@@ -21,5 +21,9 @@ void GRAPHremoveE(Graph G, int id1, int id2);
 void GRAPHedges(Graph G, edge_t *a);
 int GRAPHpath(Graph G, int id1, int id2);
 static link NEWnode(int V, int wt, link next);
+void GRAPHlistFree(Graph G);
+void GRAPHlistCreate(Graph G);
+GRAPHcheck3_M(Graph G, int id1, int id2, int id3);
+GRAPHckeck3_L(Graph G, int id1, int id2, int id3);
 
 #endif //LABORATORI_GRAPH_H

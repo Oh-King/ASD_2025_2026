@@ -12,7 +12,7 @@ typedef struct {
 }edge_t;
 
 Graph GRAPHinit(int V);
-int GRAPHload(FILE *fin); //ritorno il numero di archi
+void GRAPHload(FILE *fin, Graph G);
 void GRAPHstore(Graph G, FILE *fout);
 int GRAPHgetIndex(Graph G, char *name);
 void GRAPHinsertE(Graph G, int id1, int id2, int wt);

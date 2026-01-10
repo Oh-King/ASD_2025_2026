@@ -14,9 +14,33 @@ struct graph {
     ST tab;
 };
 
-int GRAPHload(FILE *fin) {
+vvoid GRAPHload(Graph G, FILE *fin) {
+    char elab1[MAXC], rete1[MAXC], elab2[MAXC], rete2[MAXC];
+    int flusso;
+    while (fscanf(fin, "%s %s %s %s %d", elab1, rete1, elab2, rete2, &flusso) == 5) {
 
+        //unisco id e rete
+        char nome1[70], nome2[70];
+        sprintf(nome1, "%s_%s", elab1, rete1);
+        sprintf(nome2, "%s_%s", elab2, rete2);
+        int id1 = STsearch(G->tab, nome1);
+        if (id1 == -1) {
+            STinsert(G->tab, nome1);
+            id1 = STsearch(G->tab, nome1);
+        }
+        int id2 = STsearch(G->tab, nome2);
+        if (id2 == -1) {
+            STinsert(G->tab, nome2);
+            id2 = STsearch(G->tab, nome2);
+        }
+        if (G->m_ADJ[id1][id2] == 0) {
+            G->m_ADJ[id1][id2] = flusso;
+            G->m_ADJ[id2][id1] = flusso;
+            G->E++;
+        }
+    }
 }
+
 
 Graph GRAPHinit(int V) {
     Graph G = malloc(sizeof(struct graph));

@@ -20,6 +20,6 @@ void GRAPHinsertE(Graph G, int id1, int id2, int wt);
 void GRAPHremoveE(Graph G, int id1, int id2);
 void GRAPHedges(Graph G, edge_t *a);
 int GRAPHpath(Graph G, int id1, int id2);
-link NEWnode(int V, int wt, link next);
+static link NEWnode(int V, int wt, link next);
 
 #endif //LABORATORI_GRAPH_H

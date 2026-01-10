@@ -15,6 +15,14 @@ struct graph {
     ST tab;
 };
 
+static link NEWnode(int V, int wt, link next) {
+    link node = malloc(sizeof(struct node));
+    node->V = V;
+    node->wt = wt;
+    node->next = next;
+    return node;
+}
+
 int strcmp_wrap(const void *a, const void *b) {
     char *s1 = *(char**)a;
     char *s2 = *(char**)b;
@@ -25,7 +33,6 @@ void GRAPHload( FILE *fin, Graph G) {
     char elab1[MAXC], rete1[MAXC], elab2[MAXC], rete2[MAXC];
     int flusso;
     while (fscanf(fin, "%s %s %s %s %d", elab1, rete1, elab2, rete2, &flusso) == 5) {
-
         int id1 = STsearch(G->tab, elab1);
         if (id1 == -1) {
             STinsert(G->tab, elab1);

@@ -1,5 +1,4 @@
 #include "Graph.h"
-#include "St.c"
 #include "ST.h"
 
 struct node {
@@ -69,7 +68,7 @@ Graph GRAPHinit(int V) {
 
 void GRAPHstore(Graph G, FILE *fout) { //matrice adiacenze è simmetrica
     int i, j;
-    int dim = G->tab->n_elem;
+    int dim = STcount(G->tab);
     for (i = 0; i < dim; i++) {
         char *v_name = STsearchByIndex(G->tab, i);
         fprintf(fout, "Il vertice in questione: %s\n I suoi vicini sono: ", v_name);

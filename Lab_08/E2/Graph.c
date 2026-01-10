@@ -124,11 +124,11 @@ void GRAPHlistCreate(Graph G) {
     }
 }
 
-int GRAPHcomplete3_m(Graph G, int a, int b, int c) {
+int GRAPHcheck3_M(Graph G, int a, int b, int c) {
     return G->m_ADJ[a][b] && G->m_ADJ[a][c] && G->m_ADJ[b][c];
 }
 
-int GRAPHcomplete3_l(Graph G, int a, int b, int c) {
+int GRAPHcheck3_L(Graph G, int a, int b, int c) {
     int ab = 0, ac = 0, bc = 0;
     for (link t = G->l_ADJ[a]; t != NULL; t = t->next)
         if (t->V == b) ab = 1;

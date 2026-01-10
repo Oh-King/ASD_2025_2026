@@ -23,7 +23,7 @@ int GRAPHpath(Graph G, int id1, int id2);
 static link NEWnode(int V, int wt, link next);
 void GRAPHlistFree(Graph G);
 void GRAPHlistCreate(Graph G);
-GRAPHcheck3_M(Graph G, int id1, int id2, int id3);
-GRAPHckeck3_L(Graph G, int id1, int id2, int id3);
+int GRAPHcheck3_M(Graph G, int a, int b, int c);
+int GRAPHckeck3_L(Graph G, int id1, int id2, int id3);
 
 #endif //LABORATORI_GRAPH_H

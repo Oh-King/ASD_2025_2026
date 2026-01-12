@@ -17,13 +17,8 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="77164d9d-02cc-4ad2-8318-1ca53fbc7f4e" name="Changes" comment="new exercise">
+    <list default="true" id="77164d9d-02cc-4ad2-8318-1ca53fbc7f4e" name="Changes" comment="upd and almost final">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab_08/E2/Graph.c" beforeDir="false" afterPath="$PROJECT_DIR$/Lab_08/E2/Graph.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab_08/E2/Graph.h" beforeDir="false" afterPath="$PROJECT_DIR$/Lab_08/E2/Graph.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab_08/E2/ST.c" beforeDir="false" afterPath="$PROJECT_DIR$/Lab_08/E2/ST.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab_08/E2/ST.h" beforeDir="false" afterPath="$PROJECT_DIR$/Lab_08/E2/ST.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab_08/E2/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/Lab_08/E2/main.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -301,119 +296,7 @@
       <workItem from="1767369134960" duration="8362000" />
       <workItem from="1767536881345" duration="37408000" />
       <workItem from="1767866475681" duration="20725000" />
-      <workItem from="1767971292264" duration="20206000" />
-    </task>
-    <task id="LOCAL-00086" summary="debugging">
-      <option name="closed" value="true" />
-      <created>1765825356868</created>
-      <option name="number" value="00086" />
-      <option name="presentableId" value="LOCAL-00086" />
-      <option name="project" value="LOCAL" />
-      <updated>1765825356869</updated>
-    </task>
-    <task id="LOCAL-00087" summary="update in func manouver and cleaning code">
-      <option name="closed" value="true" />
-      <created>1765831751542</created>
-      <option name="number" value="00087" />
-      <option name="presentableId" value="LOCAL-00087" />
-      <option name="project" value="LOCAL" />
-      <updated>1765831751542</updated>
-    </task>
-    <task id="LOCAL-00088" summary="auto-debug">
-      <option name="closed" value="true" />
-      <created>1765834138306</created>
-      <option name="number" value="00088" />
-      <option name="presentableId" value="LOCAL-00088" />
-      <option name="project" value="LOCAL" />
-      <updated>1765834138306</updated>
-    </task>
-    <task id="LOCAL-00089" summary="updates">
-      <option name="closed" value="true" />
-      <created>1766487072043</created>
-      <option name="number" value="00089" />
-      <option name="presentableId" value="LOCAL-00089" />
-      <option name="project" value="LOCAL" />
-      <updated>1766487072043</updated>
-    </task>
-    <task id="LOCAL-00090" summary="new ex">
-      <option name="closed" value="true" />
-      <created>1767106723824</created>
-      <option name="number" value="00090" />
-      <option name="presentableId" value="LOCAL-00090" />
-      <option name="project" value="LOCAL" />
-      <updated>1767106723829</updated>
-    </task>
-    <task id="LOCAL-00091" summary="!">
-      <option name="closed" value="true" />
-      <created>1767177977415</created>
-      <option name="number" value="00091" />
-      <option name="presentableId" value="LOCAL-00091" />
-      <option name="project" value="LOCAL" />
-      <updated>1767177977415</updated>
-    </task>
-    <task id="LOCAL-00092" summary="!">
-      <option name="closed" value="true" />
-      <created>1767178367091</created>
-      <option name="number" value="00092" />
-      <option name="presentableId" value="LOCAL-00092" />
-      <option name="project" value="LOCAL" />
-      <updated>1767178367091</updated>
-    </task>
-    <task id="LOCAL-00093" summary="func syntax">
-      <option name="closed" value="true" />
-      <created>1767372350663</created>
-      <option name="number" value="00093" />
-      <option name="presentableId" value="LOCAL-00093" />
-      <option name="project" value="LOCAL" />
-      <updated>1767372350664</updated>
-    </task>
-    <task id="LOCAL-00094" summary="updates">
-      <option name="closed" value="true" />
-      <created>1767373828739</created>
-      <option name="number" value="00094" />
-      <option name="presentableId" value="LOCAL-00094" />
-      <option name="project" value="LOCAL" />
-      <updated>1767373828739</updated>
-    </task>
-    <task id="LOCAL-00095" summary="updates">
-      <option name="closed" value="true" />
-      <created>1767373990841</created>
-      <option name="number" value="00095" />
-      <option name="presentableId" value="LOCAL-00095" />
-      <option name="project" value="LOCAL" />
-      <updated>1767373990841</updated>
-    </task>
-    <task id="LOCAL-00096" summary="updates">
-      <option name="closed" value="true" />
-      <created>1767375199409</created>
-      <option name="number" value="00096" />
-      <option name="presentableId" value="LOCAL-00096" />
-      <option name="project" value="LOCAL" />
-      <updated>1767375199409</updated>
-    </task>
-    <task id="LOCAL-00097" summary="updates">
-      <option name="closed" value="true" />
-      <created>1767375762733</created>
-      <option name="number" value="00097" />
-      <option name="presentableId" value="LOCAL-00097" />
-      <option name="project" value="LOCAL" />
-      <updated>1767375762733</updated>
-    </task>
-    <task id="LOCAL-00098" summary="read n print">
-      <option name="closed" value="true" />
-      <created>1767545296182</created>
-      <option name="number" value="00098" />
-      <option name="presentableId" value="LOCAL-00098" />
-      <option name="project" value="LOCAL" />
-      <updated>1767545296183</updated>
-    </task>
-    <task id="LOCAL-00099" summary="read n print">
-      <option name="closed" value="true" />
-      <created>1767551172756</created>
-      <option name="number" value="00099" />
-      <option name="presentableId" value="LOCAL-00099" />
-      <option name="project" value="LOCAL" />
-      <updated>1767551172757</updated>
+      <workItem from="1767971292264" duration="38839000" />
     </task>
     <task id="LOCAL-00100" summary="updates">
       <option name="closed" value="true" />
@@ -695,7 +578,119 @@
       <option name="project" value="LOCAL" />
       <updated>1768002295035</updated>
     </task>
-    <option name="localTasksCounter" value="135" />
+    <task id="LOCAL-00135" summary="updates and functions done">
+      <option name="closed" value="true" />
+      <created>1768043800157</created>
+      <option name="number" value="00135" />
+      <option name="presentableId" value="LOCAL-00135" />
+      <option name="project" value="LOCAL" />
+      <updated>1768043800157</updated>
+    </task>
+    <task id="LOCAL-00136" summary="ST done">
+      <option name="closed" value="true" />
+      <created>1768044485635</created>
+      <option name="number" value="00136" />
+      <option name="presentableId" value="LOCAL-00136" />
+      <option name="project" value="LOCAL" />
+      <updated>1768044485635</updated>
+    </task>
+    <task id="LOCAL-00137" summary="ST upd and done">
+      <option name="closed" value="true" />
+      <created>1768044580293</created>
+      <option name="number" value="00137" />
+      <option name="presentableId" value="LOCAL-00137" />
+      <option name="project" value="LOCAL" />
+      <updated>1768044580293</updated>
+    </task>
+    <task id="LOCAL-00138" summary="GRAPHinit">
+      <option name="closed" value="true" />
+      <created>1768065577767</created>
+      <option name="number" value="00138" />
+      <option name="presentableId" value="LOCAL-00138" />
+      <option name="project" value="LOCAL" />
+      <updated>1768065577767</updated>
+    </task>
+    <task id="LOCAL-00139" summary="GRAPHload">
+      <option name="closed" value="true" />
+      <created>1768067111674</created>
+      <option name="number" value="00139" />
+      <option name="presentableId" value="LOCAL-00139" />
+      <option name="project" value="LOCAL" />
+      <updated>1768067111674</updated>
+    </task>
+    <task id="LOCAL-00140" summary="GRAPHstore">
+      <option name="closed" value="true" />
+      <created>1768080134773</created>
+      <option name="number" value="00140" />
+      <option name="presentableId" value="LOCAL-00140" />
+      <option name="project" value="LOCAL" />
+      <updated>1768080134774</updated>
+    </task>
+    <task id="LOCAL-00141" summary="GRAPHgetIndex">
+      <option name="closed" value="true" />
+      <created>1768080225553</created>
+      <option name="number" value="00141" />
+      <option name="presentableId" value="LOCAL-00141" />
+      <option name="project" value="LOCAL" />
+      <updated>1768080225553</updated>
+    </task>
+    <task id="LOCAL-00142" summary="NEWnode">
+      <option name="closed" value="true" />
+      <created>1768080589215</created>
+      <option name="number" value="00142" />
+      <option name="presentableId" value="LOCAL-00142" />
+      <option name="project" value="LOCAL" />
+      <updated>1768080589215</updated>
+    </task>
+    <task id="LOCAL-00143" summary="updates">
+      <option name="closed" value="true" />
+      <created>1768082763078</created>
+      <option name="number" value="00143" />
+      <option name="presentableId" value="LOCAL-00143" />
+      <option name="project" value="LOCAL" />
+      <updated>1768082763078</updated>
+    </task>
+    <task id="LOCAL-00144" summary="updates">
+      <option name="closed" value="true" />
+      <created>1768082951363</created>
+      <option name="number" value="00144" />
+      <option name="presentableId" value="LOCAL-00144" />
+      <option name="project" value="LOCAL" />
+      <updated>1768082951363</updated>
+    </task>
+    <task id="LOCAL-00145" summary="updates">
+      <option name="closed" value="true" />
+      <created>1768083866782</created>
+      <option name="number" value="00145" />
+      <option name="presentableId" value="LOCAL-00145" />
+      <option name="project" value="LOCAL" />
+      <updated>1768083866782</updated>
+    </task>
+    <task id="LOCAL-00146" summary="FINAL">
+      <option name="closed" value="true" />
+      <created>1768084291737</created>
+      <option name="number" value="00146" />
+      <option name="presentableId" value="LOCAL-00146" />
+      <option name="project" value="LOCAL" />
+      <updated>1768084291737</updated>
+    </task>
+    <task id="LOCAL-00147" summary="upd and almost final">
+      <option name="closed" value="true" />
+      <created>1768084527740</created>
+      <option name="number" value="00147" />
+      <option name="presentableId" value="LOCAL-00147" />
+      <option name="project" value="LOCAL" />
+      <updated>1768084527740</updated>
+    </task>
+    <task id="LOCAL-00148" summary="upd and almost final">
+      <option name="closed" value="true" />
+      <created>1768084839449</created>
+      <option name="number" value="00148" />
+      <option name="presentableId" value="LOCAL-00148" />
+      <option name="project" value="LOCAL" />
+      <updated>1768084839449</updated>
+    </task>
+    <option name="localTasksCounter" value="149" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -719,23 +714,12 @@
       <path value="$PROJECT_DIR$/Lab_03" />
       <path value="$PROJECT_DIR$/Lab_04" />
     </ignored-roots>
-    <MESSAGE value="read n print" />
-    <MESSAGE value="invArray_init" />
-    <MESSAGE value="invArray  free, read n print" />
-    <MESSAGE value="printByIndex" />
-    <MESSAGE value="getByIndex" />
-    <MESSAGE value="searchByName" />
-    <MESSAGE value="equipArray init" />
-    <MESSAGE value="equipArray free" />
-    <MESSAGE value="equipArray inUse" />
-    <MESSAGE value="equipArray print" />
     <MESSAGE value="." />
     <MESSAGE value="upd" />
     <MESSAGE value="getEquipByIndex" />
     <MESSAGE value="upd in pg_index" />
     <MESSAGE value="upd in pg_print and invArray" />
     <MESSAGE value="upd in invArray" />
-    <MESSAGE value="updates" />
     <MESSAGE value="pgList free" />
     <MESSAGE value="pgList print" />
     <MESSAGE value="updates and checkups" />
@@ -744,7 +728,18 @@
     <MESSAGE value="debug" />
     <MESSAGE value="FINAL. PROBLEM WAS IN &quot;inventario.txt&quot;" />
     <MESSAGE value="new exercise" />
-    <option name="LAST_COMMIT_MESSAGE" value="new exercise" />
+    <MESSAGE value="updates and functions done" />
+    <MESSAGE value="ST done" />
+    <MESSAGE value="ST upd and done" />
+    <MESSAGE value="GRAPHinit" />
+    <MESSAGE value="GRAPHload" />
+    <MESSAGE value="GRAPHstore" />
+    <MESSAGE value="GRAPHgetIndex" />
+    <MESSAGE value="NEWnode" />
+    <MESSAGE value="updates" />
+    <MESSAGE value="FINAL" />
+    <MESSAGE value="upd and almost final" />
+    <option name="LAST_COMMIT_MESSAGE" value="upd and almost final" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>
